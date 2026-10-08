@@ -1,0 +1,301 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Brand;
+use App\Models\Motorcycle;
+use Illuminate\Database\Seeder;
+
+class MotorcycleSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $ducati = Brand::where('slug', 'ducati')->first();
+        $bmw = Brand::where('slug', 'bmw-motorrad')->first();
+        $vespa = Brand::where('slug', 'vespa')->first();
+        $harley = Brand::where('slug', 'harley-davidson')->first();
+
+        $models = [
+            // DUCATI
+            [
+                'brand_id' => $ducati?->id,
+                'name' => 'Panigale V4 S',
+                'slug' => 'ducati-panigale-v4-s',
+                'category' => 'Performance',
+                'tagline' => 'The Science of Speed',
+                'description' => 'Desmosedici Stradale 90° V4 engine born in MotoGP. Equipped with Öhlins Smart EC 2.0 electronic suspension and aerodynamic carbon winglets.',
+                'engine_cc' => 1103,
+                'horsepower' => 216,
+                'torque_nm' => 124,
+                'weight_kg' => 187,
+                'top_speed_kmh' => 315,
+                'acceleration_0_100' => 2.8,
+                'fuel_capacity_liters' => 17.0,
+                'seat_height_mm' => 850,
+                'price_starting_at' => 129000.00,
+                'currency' => 'AED',
+                'image_url' => 'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=1200&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=1200&q=80',
+                    'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1200&q=80',
+                ],
+                'color_options' => ['Ducati Red', 'Winter Test Matte Black'],
+                'is_featured' => true,
+                'is_active' => true,
+                'order_index' => 1,
+            ],
+            [
+                'brand_id' => $ducati?->id,
+                'name' => 'Streetfighter V4',
+                'slug' => 'ducati-streetfighter-v4',
+                'category' => 'Performance',
+                'tagline' => 'The Fight Formula',
+                'description' => 'A Panigale stripped of fairings with wide, high handlebars. 208 hp tamed by cutting-edge biplane wings and the latest electronics package.',
+                'engine_cc' => 1103,
+                'horsepower' => 208,
+                'torque_nm' => 123,
+                'weight_kg' => 180,
+                'top_speed_kmh' => 290,
+                'acceleration_0_100' => 3.0,
+                'fuel_capacity_liters' => 16.5,
+                'seat_height_mm' => 845,
+                'price_starting_at' => 104000.00,
+                'currency' => 'AED',
+                'image_url' => 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1200&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1200&q=80',
+                ],
+                'color_options' => ['Ducati Red', 'Dark Stealth'],
+                'is_featured' => false,
+                'is_active' => true,
+                'order_index' => 2,
+            ],
+            [
+                'brand_id' => $ducati?->id,
+                'name' => 'DesertX Discovery',
+                'slug' => 'ducati-desertx-discovery',
+                'category' => 'Adventure & Touring',
+                'tagline' => 'Dream Wilder',
+                'description' => '21" front spoked wheel, Kayaba long-travel suspension, and 937 cc Testastretta 11° engine engineered to dominate the Liwa desert dunes.',
+                'engine_cc' => 937,
+                'horsepower' => 110,
+                'torque_nm' => 92,
+                'weight_kg' => 202,
+                'top_speed_kmh' => 215,
+                'acceleration_0_100' => 3.8,
+                'fuel_capacity_liters' => 21.0,
+                'seat_height_mm' => 875,
+                'price_starting_at' => 78500.00,
+                'currency' => 'AED',
+                'image_url' => 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1200&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1200&q=80',
+                ],
+                'color_options' => ['Star White Silk', 'Discovery Livery'],
+                'is_featured' => false,
+                'is_active' => true,
+                'order_index' => 3,
+            ],
+
+            // BMW MOTORRAD
+            [
+                'brand_id' => $bmw?->id,
+                'name' => 'R 1300 GS Adventure',
+                'slug' => 'bmw-r-1300-gs-adventure',
+                'category' => 'Adventure & Touring',
+                'tagline' => 'Destination Anywhere',
+                'description' => 'The ultimate continent-crossing icon. Boxer engine with BMW ShiftCam, automated shift assistant (ASA), and 30-liter expedition aluminum fuel tank.',
+                'engine_cc' => 1300,
+                'horsepower' => 145,
+                'torque_nm' => 149,
+                'weight_kg' => 269,
+                'top_speed_kmh' => 220,
+                'acceleration_0_100' => 3.4,
+                'fuel_capacity_liters' => 30.0,
+                'seat_height_mm' => 870,
+                'price_starting_at' => 115000.00,
+                'currency' => 'AED',
+                'image_url' => 'https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?auto=format&fit=crop&w=1200&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?auto=format&fit=crop&w=1200&q=80',
+                ],
+                'color_options' => ['Racing Red', 'Style GS Trophy', 'Option 719 Karakorum'],
+                'is_featured' => true,
+                'is_active' => true,
+                'order_index' => 4,
+            ],
+            [
+                'brand_id' => $bmw?->id,
+                'name' => 'S 1000 RR',
+                'slug' => 'bmw-s-1000-rr',
+                'category' => 'Performance',
+                'tagline' => 'Never Stop Challenging',
+                'description' => 'High-precision inline-four superbike with ShiftCam technology delivering 205 hp, dynamic traction control, and M carbon winglets.',
+                'engine_cc' => 999,
+                'horsepower' => 205,
+                'torque_nm' => 113,
+                'weight_kg' => 197,
+                'top_speed_kmh' => 303,
+                'acceleration_0_100' => 2.9,
+                'fuel_capacity_liters' => 16.5,
+                'seat_height_mm' => 824,
+                'price_starting_at' => 98000.00,
+                'currency' => 'AED',
+                'image_url' => 'https://images.unsplash.com/photo-1609630875171-b1321377ee65?auto=format&fit=crop&w=1200&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1609630875171-b1321377ee65?auto=format&fit=crop&w=1200&q=80',
+                ],
+                'color_options' => ['Lightwhite / M Motorsport', 'Blackstorm Metallic'],
+                'is_featured' => true,
+                'is_active' => true,
+                'order_index' => 5,
+            ],
+            [
+                'brand_id' => $bmw?->id,
+                'name' => 'CE 04 Electric',
+                'slug' => 'bmw-ce-04-electric',
+                'category' => 'Urban Mobility',
+                'tagline' => 'The Silent Revolution',
+                'description' => 'Futuristic electric maxi-scooter with low center of gravity, floating bench seat, and 130 km urban range on a single charge.',
+                'engine_cc' => 0,
+                'horsepower' => 42,
+                'torque_nm' => 62,
+                'weight_kg' => 231,
+                'top_speed_kmh' => 120,
+                'acceleration_0_100' => 6.2,
+                'fuel_capacity_liters' => 0.0,
+                'seat_height_mm' => 780,
+                'price_starting_at' => 62000.00,
+                'currency' => 'AED',
+                'image_url' => 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1200&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1200&q=80',
+                ],
+                'color_options' => ['Light White', 'Magellan Grey Metallic'],
+                'is_featured' => false,
+                'is_active' => true,
+                'order_index' => 6,
+            ],
+
+            // VESPA
+            [
+                'brand_id' => $vespa?->id,
+                'name' => 'GTS Super 300 Tech',
+                'slug' => 'vespa-gts-super-300-tech',
+                'category' => 'Urban Mobility',
+                'tagline' => 'Power Meets Prestige',
+                'description' => 'Flagship 300cc HPE (High Performance Engine) with full color TFT display, keyless ignition, and iconic pressed steel bodywork.',
+                'engine_cc' => 278,
+                'horsepower' => 24,
+                'torque_nm' => 26,
+                'weight_kg' => 148,
+                'top_speed_kmh' => 128,
+                'acceleration_0_100' => 8.5,
+                'fuel_capacity_liters' => 8.5,
+                'seat_height_mm' => 790,
+                'price_starting_at' => 34500.00,
+                'currency' => 'AED',
+                'image_url' => 'https://images.unsplash.com/photo-1571188654248-7a89213915f7?auto=format&fit=crop&w=1200&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1571188654248-7a89213915f7?auto=format&fit=crop&w=1200&q=80',
+                ],
+                'color_options' => ['Grigio Ottanio (Teal)', 'Nero Convinto (Gloss Black)'],
+                'is_featured' => true,
+                'is_active' => true,
+                'order_index' => 7,
+            ],
+            [
+                'brand_id' => $vespa?->id,
+                'name' => 'Primavera 150 Touring',
+                'slug' => 'vespa-primavera-150-touring',
+                'category' => 'Urban Mobility',
+                'tagline' => 'The Pure Essence of Style',
+                'description' => 'Light, agile, and impeccably proportioned. Chrome front and rear luggage racks with fuel-injected i-get 150cc engine.',
+                'engine_cc' => 155,
+                'horsepower' => 13,
+                'torque_nm' => 12,
+                'weight_kg' => 126,
+                'top_speed_kmh' => 98,
+                'acceleration_0_100' => 12.0,
+                'fuel_capacity_liters' => 8.0,
+                'seat_height_mm' => 790,
+                'price_starting_at' => 26000.00,
+                'currency' => 'AED',
+                'image_url' => 'https://images.unsplash.com/photo-1571188654248-7a89213915f7?auto=format&fit=crop&w=1200&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1571188654248-7a89213915f7?auto=format&fit=crop&w=1200&q=80',
+                ],
+                'color_options' => ['Verde Amabile (Pastel Green)', 'Bianco Innocente'],
+                'is_featured' => false,
+                'is_active' => true,
+                'order_index' => 8,
+            ],
+
+            // HARLEY-DAVIDSON
+            [
+                'brand_id' => $harley?->id,
+                'name' => 'Fat Boy 114',
+                'slug' => 'harley-davidson-fat-boy-114',
+                'category' => 'Premium Heritage',
+                'tagline' => 'The Original Fat Custom Icon',
+                'description' => 'The imposing legend. Solid cast Lakester wheels, 240 mm rear tire, steamroller stance, and muscular Milwaukee-Eight 114 V-Twin engine.',
+                'engine_cc' => 1868,
+                'horsepower' => 94,
+                'torque_nm' => 155,
+                'weight_kg' => 317,
+                'top_speed_kmh' => 180,
+                'acceleration_0_100' => 4.4,
+                'fuel_capacity_liters' => 18.9,
+                'seat_height_mm' => 675,
+                'price_starting_at' => 112000.00,
+                'currency' => 'AED',
+                'image_url' => 'https://images.unsplash.com/photo-1558980664-769d59546b3d?auto=format&fit=crop&w=1200&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1558980664-769d59546b3d?auto=format&fit=crop&w=1200&q=80',
+                ],
+                'color_options' => ['Vivid Black', 'Baja Orange', 'Sharkskin Blue'],
+                'is_featured' => true,
+                'is_active' => true,
+                'order_index' => 9,
+            ],
+            [
+                'brand_id' => $harley?->id,
+                'name' => 'Pan America 1250 Special',
+                'slug' => 'harley-pan-america-1250-special',
+                'category' => 'Adventure & Touring',
+                'tagline' => 'Forged for Adventure',
+                'description' => 'Revolution Max 1250 liquid-cooled V-Twin with Adaptive Ride Height (ARH), semi-active front and rear suspension, and multi-mode terrain management.',
+                'engine_cc' => 1252,
+                'horsepower' => 150,
+                'torque_nm' => 128,
+                'weight_kg' => 258,
+                'top_speed_kmh' => 220,
+                'acceleration_0_100' => 3.3,
+                'fuel_capacity_liters' => 21.2,
+                'seat_height_mm' => 850,
+                'price_starting_at' => 99500.00,
+                'currency' => 'AED',
+                'image_url' => 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1200&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1200&q=80',
+                ],
+                'color_options' => ['Fastback Blue / White Sand', 'Vivid Black'],
+                'is_featured' => false,
+                'is_active' => true,
+                'order_index' => 10,
+            ],
+        ];
+
+        foreach ($models as $modelData) {
+            if (! empty($modelData['brand_id'])) {
+                Motorcycle::updateOrCreate(
+                    ['slug' => $modelData['slug']],
+                    $modelData
+                );
+            }
+        }
+    }
+}

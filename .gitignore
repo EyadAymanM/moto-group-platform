@@ -30,3 +30,7 @@ backend/bootstrap/cache/*.php
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Internal tracking & chat memory
+docs/
+
