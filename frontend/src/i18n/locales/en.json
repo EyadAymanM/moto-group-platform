@@ -1,0 +1,126 @@
+{
+  "nav": {
+    "home": "Showroom",
+    "marques": "Authorized Marques",
+    "fleet": "Fleet Catalog",
+    "specs": "Telemetry & Specs",
+    "dealers": "Flagship Hubs",
+    "adminPortal": "CMS Portal",
+    "bookTestRide": "Book Test Ride"
+  },
+  "theme": {
+    "toggleDark": "Switch to Dark Mode",
+    "toggleLight": "Switch to Light Mode"
+  },
+  "lang": {
+    "en": "English",
+    "ar": "العربية"
+  },
+  "hero": {
+    "badge": "Official Middle East Motorcycle Group",
+    "titlePrefix": "ENGINEERING",
+    "titleHighlight": "SOVEREIGNTY",
+    "titleSuffix": "ON TWO WHEELS",
+    "subtitle": "The premier regional gateway to the pinnacle of motorcycling. Featuring exclusive allocations from Ducati, BMW Motorrad, Vespa, and Harley-Davidson across Dubai, Riyadh, and Doha.",
+    "exploreFleet": "Explore Showroom Fleet",
+    "reserveSlot": "Request Test Ride",
+    "stats": {
+      "marquesCount": "Authorized Marques",
+      "curatedModels": "Boutique Allocations",
+      "regionalHubs": "Flagship Boutiques",
+      "dynoCertified": "Certified Dyno Labs"
+    }
+  },
+  "marquesBar": {
+    "title": "Authorized Manufacturer Marquees",
+    "all": "All Marquees",
+    "modelsCount": "models",
+    "ducati": "Ducati",
+    "bmw": "BMW Motorrad",
+    "vespa": "Vespa",
+    "harley": "Harley-Davidson"
+  },
+  "catalog": {
+    "title": "Showroom Inventory",
+    "subtitle": "Track-tested precision machinery engineered for the Gulf region.",
+    "categories": {
+      "all": "All Segments",
+      "Performance": "Performance",
+      "Adventure & Touring": "Adventure & Touring",
+      "Urban Mobility": "Urban Mobility",
+      "Premium Heritage": "Premium Heritage"
+    },
+    "filterMarque": "Filter by Marque",
+    "viewSpecs": "Full Telemetry",
+    "bookRide": "Book Test Ride",
+    "startingAt": "Starting from",
+    "power": "BHP",
+    "torque": "Nm",
+    "accel": "0-100",
+    "displacement": "CC",
+    "noModels": "No motorcycles match the selected criteria."
+  },
+  "telemetry": {
+    "modalTitle": "Engineering Telemetry",
+    "engine": "Engine Displacement",
+    "power": "Max Power Output",
+    "torque": "Peak Torque",
+    "accel": "Acceleration (0-100 km/h)",
+    "topSpeed": "Top Speed",
+    "weight": "Dry Weight",
+    "fuel": "Fuel Tank Capacity",
+    "seatHeight": "Seat Height",
+    "colors": "Factory Colorways",
+    "reserveBtn": "Schedule Private Test Session"
+  },
+  "testRide": {
+    "drawerTitle": "VIP Test Ride Concierge",
+    "drawerSubtitle": "Experience high-performance machinery at our private track and road facilities in Dubai, Riyadh, and Doha.",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "e.g. Tariq Al-Mansoor",
+    "email": "Email Address",
+    "emailPlaceholder": "tariq@example.com",
+    "phone": "Phone / WhatsApp",
+    "phonePlaceholder": "+971 50 123 4567",
+    "preferredCity": "Select Boutique City",
+    "selectCity": "Select Showroom",
+    "cities": {
+      "Dubai": "Dubai (Sheikh Zayed Rd Flagship)",
+      "Riyadh": "Riyadh (Al Malqa Showroom)",
+      "Doha": "Doha (The Pearl Boutique)"
+    },
+    "selectedMotorcycle": "Selected Motorcycle",
+    "selectBikePlaceholder": "Choose a motorcycle model...",
+    "preferredDate": "Preferred Session Date",
+    "experienceLevel": "Riding Experience Level",
+    "levels": {
+      "Beginner": "Novice (Under 2 years / A2 License)",
+      "Intermediate": "Experienced (2-5 years track/street)",
+      "Expert": "Master / Track Certified (5+ years)"
+    },
+    "notes": "Concierge Notes & Gear Size",
+    "notesPlaceholder": "Helmet size, preferred circuit session, or specific telemetry requests...",
+    "submit": "Confirm Concierge Booking",
+    "submitting": "Reserving Allocation...",
+    "successTitle": "Allocation Reserved",
+    "successMessage": "Your private test session request has been received. Our VIP concierge will contact you via WhatsApp within 2 hours to confirm schedule and safety equipment.",
+    "close": "Close Concierge"
+  },
+  "dealers": {
+    "title": "Regional Dealership Boutiques",
+    "subtitle": "Visit our temperature-controlled flagship showrooms with dedicated dyno bays and VIP client lounges.",
+    "dubai": "Dubai Flagship",
+    "riyadh": "Riyadh Boutique",
+    "doha": "Doha Lounge",
+    "whatsapp": "Concierge WhatsApp",
+    "statusOpen": "Open Today (9:00 AM - 9:00 PM)",
+    "statusService": "Dyno Bay Active"
+  },
+  "footer": {
+    "tagline": "The Middle East's Sovereign Multi-Brand Motorcycle Group.",
+    "marquesTitle": "Authorized Marques",
+    "dealersTitle": "Flagship Boutiques",
+    "rights": "All rights reserved. Official regional partner for world motorcycling marques.",
+    "adminAccess": "Dealer & Moderator Portal"
+  }
+}
