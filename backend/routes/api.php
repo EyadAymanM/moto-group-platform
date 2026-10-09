@@ -27,10 +27,8 @@ Route::get('/cms/settings', [CmsSettingController::class, 'index']);
 | Authentication Routes (Sanctum SPA Session)
 |--------------------------------------------------------------------------
 */
-Route::middleware('web')->group(function () {
-    Route::post('/auth/login', [AuthController::class, 'login'])->name('login');
-    Route::post('/auth/logout', [AuthController::class, 'logout']);
-});
+Route::post('/auth/login', [AuthController::class, 'login'])->name('login');
+Route::post('/auth/logout', [AuthController::class, 'logout']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/auth/logout', [AuthController::class, 'logout']);

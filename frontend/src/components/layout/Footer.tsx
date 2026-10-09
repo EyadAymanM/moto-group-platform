@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useLocale } from '../../contexts/LocaleContext'
+import { useAuth } from '../../contexts/AuthContext'
 import { Link } from 'react-router-dom'
 import { ShieldCheck, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'motion/react'
@@ -8,6 +9,7 @@ import { motion, AnimatePresence } from 'motion/react'
 export const Footer: React.FC = () => {
   const { t } = useTranslation()
   const { locale, setLocale } = useLocale()
+  const { user } = useAuth()
 
   const [popover, setPopover] = useState<'privacy' | 'terms' | null>(null)
   const popoverContainerRef = useRef<HTMLDivElement>(null)
@@ -105,15 +107,18 @@ export const Footer: React.FC = () => {
               {t('footer.terms', 'Terms')}
             </button>
 
-            <span className="text-theme-subtle">·</span>
-
-            {/* Subtle Dealer & Moderator Portal Access */}
-            <Link
-              to="/admin/login"
-              className="hover:text-theme-gold transition-colors text-[11px] opacity-80 hover:opacity-100"
-            >
-              {t('footer.adminAccess', 'Portal')}
-            </Link>
+            {/* Subtle Dealer & Moderator Dashboard Access (Only for logged-in users) */}
+            {user && (
+              <>
+                <span className="text-theme-subtle">·</span>
+                <Link
+                  to="/admin"
+                  className="hover:text-theme-gold transition-colors text-[11px] opacity-80 hover:opacity-100"
+                >
+                  {t('footer.adminAccess', 'Dashboard')}
+                </Link>
+              </>
+            )}
 
             {/* =========================================================================
                 POPOVER: Floating Luxury Legal Content Panel

@@ -9,8 +9,8 @@ function getCsrfTokenFromCookie(): string | null {
 
 let csrfFetched = false
 
-export async function ensureCsrf(): Promise<void> {
-  if (csrfFetched && getCsrfTokenFromCookie()) return
+export async function ensureCsrf(force = false): Promise<void> {
+  if (!force && csrfFetched && getCsrfTokenFromCookie()) return
   try {
     await fetch(`${API_BASE}/sanctum/csrf-cookie`, {
       method: 'GET',
@@ -24,7 +24,8 @@ export async function ensureCsrf(): Promise<void> {
 
 async function request<T>(
   endpoint: string,
-  options: RequestInit = {}
+  options: RequestInit = {},
+  isRetry = false
 ): Promise<T> {
   const url = `${API_BASE}${endpoint}`
   const headers: Record<string, string> = {
@@ -47,6 +48,13 @@ async function request<T>(
     credentials: 'include',
     headers,
   })
+
+  // Auto-Healing: If HTTP 419 (CSRF token mismatch), refresh CSRF token and retry once transparently
+  if (response.status === 419 && !isRetry) {
+    console.warn('[API] CSRF token mismatch (419). Auto-healing session and retrying request...')
+    await ensureCsrf(true)
+    return request<T>(endpoint, options, true)
+  }
 
   if (!response.ok) {
     let errorData: any
@@ -100,13 +108,18 @@ export const api = {
 
   getCmsSettings: () => request<CmsSettings>('/api/cms/settings'),
 
-  // Authentication
+  // Authentication with robust session recovery
   login: async (credentials: { email: string; password: string }) => {
-    await ensureCsrf()
-    return request<{ message: string; user: User }>('/api/auth/login', {
-      method: 'POST',
-      body: JSON.stringify(credentials),
-    })
+    try {
+      await ensureCsrf(true)
+      return await request<{ message: string; user: User }>('/api/auth/login', {
+        method: 'POST',
+        body: JSON.stringify(credentials),
+      })
+    } catch (err) {
+      csrfFetched = false
+      throw err
+    }
   },
 
   logout: async () => {
@@ -130,11 +143,18 @@ export const api = {
 
   // Admin CMS & Catalog Management
   admin: {
-    getMotorcycles: () => request<{ data: Motorcycle[] }>('/api/admin/motorcycles'),
+    getMotorcycles: async (params?: { category?: string; brand_id?: number }): Promise<Motorcycle[]> => {
+      const searchParams = new URLSearchParams()
+      if (params?.category) searchParams.set('category', params.category)
+      if (params?.brand_id) searchParams.set('brand_id', params.brand_id.toString())
+      const q = searchParams.toString() ? `?${searchParams.toString()}` : ''
+      const res = await request<Motorcycle[] | { data: Motorcycle[] }>(`/api/admin/motorcycles${q}`)
+      return Array.isArray(res) ? res : (res as any)?.data || []
+    },
     
     createMotorcycle: async (data: Partial<Motorcycle>) => {
       await ensureCsrf()
-      return request<{ message: string; data: Motorcycle }>('/api/admin/motorcycles', {
+      return request<{ message: string; motorcycle: Motorcycle }>('/api/admin/motorcycles', {
         method: 'POST',
         body: JSON.stringify(data),
       })
@@ -142,7 +162,7 @@ export const api = {
 
     updateMotorcycle: async (id: number, data: Partial<Motorcycle>) => {
       await ensureCsrf()
-      return request<{ message: string; data: Motorcycle }>(`/api/admin/motorcycles/${id}`, {
+      return request<{ message: string; motorcycle: Motorcycle }>(`/api/admin/motorcycles/${id}`, {
         method: 'PUT',
         body: JSON.stringify(data),
       })
@@ -155,9 +175,14 @@ export const api = {
       })
     },
 
-    getTestRides: (status?: string) => {
-      const q = status ? `?status=${status}` : ''
-      return request<{ data: TestRideRequest[] }>(`/api/admin/test-rides${q}`)
+    getTestRides: async (params?: { status?: string; city?: string; brand_id?: number }): Promise<TestRideRequest[]> => {
+      const searchParams = new URLSearchParams()
+      if (params?.status) searchParams.set('status', params.status)
+      if (params?.city) searchParams.set('city', params.city)
+      if (params?.brand_id) searchParams.set('brand_id', params.brand_id.toString())
+      const q = searchParams.toString() ? `?${searchParams.toString()}` : ''
+      const res = await request<TestRideRequest[] | { data: TestRideRequest[] }>(`/api/admin/test-rides${q}`)
+      return Array.isArray(res) ? res : (res as any)?.data || []
     },
 
     updateTestRideStatus: async (id: number, status: string, adminNotes?: string) => {
@@ -173,6 +198,14 @@ export const api = {
       return request<{ message: string; settings: CmsSettings }>('/api/admin/cms/settings', {
         method: 'PUT',
         body: JSON.stringify(settings),
+      })
+    },
+
+    updateCmsSetting: async (key: string, value: any) => {
+      await ensureCsrf()
+      return request<{ message: string; setting: any }>(`/api/admin/cms/settings/${key}`, {
+        method: 'PUT',
+        body: JSON.stringify({ value }),
       })
     },
   },

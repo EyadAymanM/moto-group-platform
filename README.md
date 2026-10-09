@@ -89,10 +89,10 @@ Frontend application will be accessible at `http://localhost:5173`.
 | Role | Email | Password | Scope & Permissions |
 |------|-------|----------|---------------------|
 | **Group Admin** | `admin@motogroup.ae` | `password` | Global access: CMS settings, all 4 brands, full catalog CRUD, all test rides |
-| **Ducati Moderator** | `ducati.mod@motogroup.ae` | `password` | Brand-scoped: Ducati catalog CRUD, Ducati test-ride leads |
-| **BMW Moderator** | `bmw.mod@motogroup.ae` | `password` | Brand-scoped: BMW Motorrad catalog CRUD, BMW test-ride leads |
-| **Vespa Moderator** | `vespa.mod@motogroup.ae` | `password` | Brand-scoped: Vespa catalog CRUD, Vespa test-ride leads |
-| **Harley Moderator** | `harley.mod@motogroup.ae` | `password` | Brand-scoped: Harley-Davidson catalog CRUD, Harley test-ride leads |
+| **Ducati Moderator** | `moderator.ducati@motogroup.com` | `password` | Brand-scoped: Ducati catalog CRUD, Ducati test-ride leads |
+| **BMW Moderator** | `moderator.bmw@motogroup.com` | `password` | Brand-scoped: BMW Motorrad catalog CRUD, BMW test-ride leads |
+| **Vespa Moderator** | `moderator.vespa@motogroup.com` | `password` | Brand-scoped: Vespa catalog CRUD, Vespa test-ride leads |
+| **Harley Moderator** | `moderator.harley@motogroup.com` | `password` | Brand-scoped: Harley-Davidson catalog CRUD, Harley test-ride leads |
 
 ---
 
@@ -108,6 +108,14 @@ Frontend application will be accessible at `http://localhost:5173`.
 - **Regional Flagship Hubs (Dubai, Riyadh, Doha):** Interactive architectural boutique card with city switcher tabs, dual-mode media carousel slider (switching between architectural photo and embedded interactive Google Maps), confirmed addresses, operating hours, direct phone, VIP lounge reservations, and Google Maps directions.
 - **Automotive Group Footer:** Bilingual legal marque footer with live language toggle (`EN | العربية`), localized Privacy Policy and Terms & Conditions floating popovers anchored directly above the trigger links with smooth tab switching, and administrative portal access.
 - **Bilingual & Bidi Support:** Native English (LTR) and Gulf Arabic (RTL) with `Tajawal` typography and contextual bidi alignment.
+
+### Role-Aware CMS & Operations Cockpit (`/admin`)
+- **Luxury Dark/Light Technical Sidebar & Operations Bar (`SidebarNav.tsx`, `AdminDashboardPage.tsx`):** Stitch-aligned console with gold indicator pips, role seals (`GROUP ADMIN` vs `MARQUE MODERATOR`), dual light/dark theme switching, native language toggle (`EN | العربية`), and direct showroom link.
+- **Dual-Mode Theme Switching & Full Arabic RTL Support:** Seamless switching between luxury obsidian dark (`#0B0F17` / `#1C2433`) and warm desert sand light modes, with full right-to-left (RTL) layout adaptation and `Tajawal` font across all administrative views.
+- **Operations Overview (`OverviewView.tsx`):** Real-time KPI matrix tracking fleet capacity, pending VIP leads, average horsepower dyno telemetry, and regional hub distribution (Dubai, Riyadh, Doha).
+- **Fleet Inventory Management (`InventoryTableView.tsx` & `MotorcycleFormModal.tsx`):** High-density sortable data table with brand filtering (all marques for Admin; strictly locked to assigned marque for Moderator), full motorcycle CRUD, and dyno specification editor.
+- **VIP Concierge Pipeline (`LeadsTableView.tsx`):** Live lead dossier tracking with inline status transitions (`Pending` → `Confirmed` → `Completed` / `Cancelled`) and direct one-click WhatsApp Concierge client handoff.
+- **Storefront CMS & Live Preview Slide-Over (`CmsSettingsView.tsx` & `LivePreviewDrawer.tsx`):** Real-time staging environment for hero copy and section visibility toggles with an interactive Framer Motion slide-over preview that updates instantly without unsaved database writes and requires explicit publishing. Smoothly recedes to full widescreen when managing data tables.
 
 ---
 

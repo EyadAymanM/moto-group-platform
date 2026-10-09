@@ -73,12 +73,15 @@
   - [x] Block 4: Telemetry & engineering specs modal with colorway swatches (`TelemetryModal.tsx`)
   - [x] Block 5: "Book a Test Ride" VIP concierge wizard with animated height & boarding pass (`TestRideModal.tsx`)
   - [x] Block 6: Regional Flagship Hubs boutique directory & automotive group footer (`DealershipsSection.tsx`, `Footer.tsx`)
-- [ ] **Phase 3: Role-Aware CMS & Admin Portal**
-  - [ ] Login screen with CSRF + Sanctum authentication
-  - [ ] Admin dashboard view (global stats, brand overview, CMS settings toggles)
-  - [ ] Moderator dashboard view (brand-scoped motorcycle CRUD & test ride lead table)
-  - [ ] Motorcycle create/edit form
-  - [ ] Test ride request status switcher
+- [x] **Phase 3: Role-Aware CMS & Admin Portal**
+  - [x] Login screen with CSRF + Sanctum authentication (`AdminLoginPage.tsx`)
+  - [x] Admin dashboard view with global stats, marque overview & live preview slide-over (`AdminDashboardPage.tsx`, `OverviewView.tsx`)
+  - [x] Moderator dashboard view with brand-scoped motorcycle CRUD & test ride lead table (`InventoryTableView.tsx`, `LeadsTableView.tsx`)
+  - [x] Motorcycle create/edit modal form with dyno telemetry matrix (`MotorcycleFormModal.tsx`)
+  - [x] Test ride request status switcher with real-time API pipeline & WhatsApp concierge handoff
+  - [x] Storefront CMS visual editor with live preview drawer & explicit save/publish workflow (`CmsSettingsView.tsx`, `LivePreviewDrawer.tsx`)
+  - [x] Complete dashboard localization (English & Gulf Arabic RTL) across all views, tables, forms, and drawers
+  - [x] Dual-mode light/dark theme switcher across operations cockpit top bar, mobile drawers, and portal login
 - [ ] **Phase 4: Polish & Integration**
   - [ ] Database ERD diagram & schema documentation
   - [ ] Image upload handling (local/storage to replace initial URL string inputs)
