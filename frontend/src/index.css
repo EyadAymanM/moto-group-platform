@@ -64,11 +64,13 @@ body {
 .border-theme-focus { border-color: var(--border-focus); }
 .text-theme-primary { color: var(--text-primary); }
 .text-theme-muted { color: var(--text-muted); }
-.text-theme-gold { color: var(--accent-gold); }
+.text-theme-gold, .text-theme-accent { color: var(--accent-gold); }
 .text-theme-crimson { color: var(--accent-crimson); }
-.bg-theme-gold { background-color: var(--accent-gold); }
+.bg-theme-gold, .bg-theme-accent { background-color: var(--accent-gold); }
+.bg-theme-accent-hover { background-color: var(--accent-gold-hover); }
+.border-theme-accent { border-color: var(--accent-gold); }
 .bg-theme-crimson { background-color: var(--accent-crimson); }
-.bg-theme-gold-subtle { background-color: var(--accent-gold-subtle); }
+.bg-theme-gold-subtle, .bg-theme-accent-subtle { background-color: var(--accent-gold-subtle); }
 .bg-theme-crimson-subtle { background-color: var(--accent-crimson-subtle); }
 
 /* Glassmorphic Navbar & Modals */

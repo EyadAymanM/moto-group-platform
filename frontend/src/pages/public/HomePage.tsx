@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { Navbar } from '../../components/layout/Navbar'
 import { BrandMarqueeBar } from '../../components/layout/BrandMarqueeBar'
 import { HeroSection } from '../../components/sections/HeroSection'
+import { CatalogSection } from '../../components/sections/CatalogSection'
+import { TelemetryModal } from '../../components/modals/TelemetryModal'
+import { TestRideModal } from '../../components/modals/TestRideModal'
 import { ScrollReveal } from '../../components/common/ScrollReveal'
 import { api } from '../../services/api'
-import type { Brand, CmsSettings } from '../../types'
+import type { Brand, CmsSettings, Motorcycle } from '../../types'
 import { useLocale } from '../../contexts/LocaleContext'
 import { motion, AnimatePresence } from 'motion/react'
 
@@ -13,6 +16,9 @@ export const HomePage: React.FC = () => {
   const [brands, setBrands] = useState<Brand[]>([])
   const [cmsSettings, setCmsSettings] = useState<CmsSettings | null>(null)
   const [selectedBrandId, setSelectedBrandId] = useState<number | null>(null)
+  const [telemetryModalBike, setTelemetryModalBike] = useState<Motorcycle | null>(null)
+  const [testRideBike, setTestRideBike] = useState<Motorcycle | null>(null)
+  const [isTestRideModalOpen, setIsTestRideModalOpen] = useState(false)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -41,7 +47,7 @@ export const HomePage: React.FC = () => {
   return (
     <div className="min-h-screen bg-theme-base text-theme-primary flex flex-col transition-colors duration-200">
       {/* Sticky Navigation Bar */}
-      <Navbar onOpenTestRideDrawer={() => alert('Test Ride Drawer will open here (Block 5)')} />
+      <Navbar onOpenTestRideDrawer={() => setIsTestRideModalOpen(true)} />
 
       {/* Main Content with Hardware-Accelerated Locale Crossfade */}
       <AnimatePresence mode="wait">
@@ -73,7 +79,47 @@ export const HomePage: React.FC = () => {
                 const el = document.getElementById('catalog')
                 if (el) el.scrollIntoView({ behavior: 'smooth' })
               }}
-              onBookTestRide={() => alert('Booking drawer ready in Block 5')}
+              onBookTestRide={() => setIsTestRideModalOpen(true)}
+            />
+          )}
+
+          {/* Section: Multi-Brand Catalog Grid & Editorial Segment Showcase (Block 3) */}
+          {cmsSettings?.section_visibility?.catalog_filter_grid !== false && (
+            <ScrollReveal delay={0.08}>
+              <CatalogSection
+                brands={brands}
+                selectedBrandId={selectedBrandId}
+                onSelectBrand={(id) => setSelectedBrandId(id)}
+                onSelectTelemetry={(bike) => setTelemetryModalBike(bike)}
+                onBookRide={(bike) => {
+                  setTestRideBike(bike)
+                  setIsTestRideModalOpen(true)
+                }}
+              />
+            </ScrollReveal>
+          )}
+
+          {/* Block 4: Engineering Telemetry Modal */}
+          <TelemetryModal
+            motorcycle={telemetryModalBike}
+            onClose={() => setTelemetryModalBike(null)}
+            onBookRide={(bike) => {
+              setTelemetryModalBike(null)
+              setTestRideBike(bike)
+              setIsTestRideModalOpen(true)
+            }}
+          />
+
+          {/* Block 5: VIP Test-Ride Concierge Wizard Modal */}
+          {cmsSettings?.section_visibility?.test_ride_concierge_drawer !== false && (
+            <TestRideModal
+              isOpen={isTestRideModalOpen}
+              preSelectedMotorcycle={testRideBike}
+              brands={brands}
+              onClose={() => {
+                setIsTestRideModalOpen(false)
+                setTestRideBike(null)
+              }}
             />
           )}
         </motion.main>

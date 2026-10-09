@@ -50,6 +50,13 @@
       "Urban Mobility": "Urban Mobility",
       "Premium Heritage": "Premium Heritage"
     },
+    "segmentDescriptions": {
+      "all": "Explore all factory allocations across our four authorized European and American manufacturers.",
+      "Performance": "Purebred track engineering and aerodynamic supremacy born in MotoGP and WorldSBK.",
+      "Adventure & Touring": "Engineered to conquer cross-continental expeditions and severe desert dunes.",
+      "Urban Mobility": "Effortless Italian elegance and next-generation electric urban transport.",
+      "Premium Heritage": "Uncompromising American heavyweight steel and timeless mechanical soul."
+    },
     "filterMarque": "Filter by Marque",
     "viewSpecs": "Full Telemetry",
     "bookRide": "Book Test Ride",
@@ -58,6 +65,9 @@
     "torque": "Nm",
     "accel": "0-100",
     "displacement": "CC",
+    "allMarques": "All Marques",
+    "showingBrand": "Filtered by",
+    "clearFilter": "Show All",
     "noModels": "No motorcycles match the selected criteria."
   },
   "telemetry": {
@@ -76,6 +86,14 @@
   "testRide": {
     "drawerTitle": "VIP Test Ride Concierge",
     "drawerSubtitle": "Experience high-performance machinery at our private track and road facilities in Dubai, Riyadh, and Doha.",
+    "steps": {
+      "machine": "Machine & Hub",
+      "schedule": "Schedule & Skill",
+      "contact": "VIP Contact"
+    },
+    "changeBike": "Change Machine",
+    "chooseBike": "Choose Motorcycle",
+    "quickDates": "Select Available Date Slot",
     "fullName": "Full Name",
     "fullNamePlaceholder": "e.g. Tariq Al-Mansoor",
     "email": "Email Address",

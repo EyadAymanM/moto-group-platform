@@ -53,8 +53,11 @@ composer install
 cp .env.example .env
 php artisan key:generate
 
-# Run migrations
-php artisan migrate
+# Run migrations and seed multi-brand catalog & test accounts
+php artisan migrate --seed
+
+# Run automated backend test suite (8/8 tests, 108 assertions)
+php artisan test tests/Feature/ApiTest.php
 
 # Start Laravel backend server
 php artisan serve
@@ -71,6 +74,9 @@ cd frontend
 # Install dependencies (Tailwind v4 pre-configured)
 npm install
 
+# Verify production build & TypeScript types
+npm run build
+
 # Start Vite dev server
 npm run dev
 ```
@@ -78,6 +84,33 @@ Frontend application will be accessible at `http://localhost:5173`.
 
 ---
 
+### 3. Pre-Seeded Test Credentials
+
+| Role | Email | Password | Scope & Permissions |
+|------|-------|----------|---------------------|
+| **Group Admin** | `admin@motogroup.ae` | `password` | Global access: CMS settings, all 4 brands, full catalog CRUD, all test rides |
+| **Ducati Moderator** | `ducati.mod@motogroup.ae` | `password` | Brand-scoped: Ducati catalog CRUD, Ducati test-ride leads |
+| **BMW Moderator** | `bmw.mod@motogroup.ae` | `password` | Brand-scoped: BMW Motorrad catalog CRUD, BMW test-ride leads |
+| **Vespa Moderator** | `vespa.mod@motogroup.ae` | `password` | Brand-scoped: Vespa catalog CRUD, Vespa test-ride leads |
+| **Harley Moderator** | `harley.mod@motogroup.ae` | `password` | Brand-scoped: Harley-Davidson catalog CRUD, Harley test-ride leads |
+
+---
+
+## Implemented Platform Highlights
+
+### Technical Luxury Public Showroom (`/`)
+- **Brand Marquee Bar:** Authorized GCC distribution seals for Ducati, BMW Motorrad, Vespa, and Harley-Davidson with active model counters and filtering.
+- **Hero Showcase:** Panigale V4 flagship spotlight with rim lighting, floating telemetry badges (215.5 BHP, 2.8s 0-100, 1,103 CC), and regional GCC showroom ribbon.
+- **Editorial Segment Showcase:** 5-segment filter (`ALL`, `PERFORMANCE`, `ADVENTURE`, `URBAN EV`, `HERITAGE`) with subtle watermark branding and high-contrast typography.
+- **Dyno Cockpit Cards:** Stitch MCP token-aligned cards (8px container, 4px buttons) featuring starting prices in AED, live telemetry HUD (BHP, Torque, 0-100 km/h), displacement badge, and dual CTAs.
+- **Engineering Telemetry Modal:** 12px modal dialog with backdrop acrylic blur, multi-angle gallery, interactive factory colorway swatches, and 8-point engineering spec matrix.
+- **VIP Test-Ride Concierge Wizard:** 3-stage guided reservation wizard + VIP Boarding Pass with dynamic hardware-accelerated height animation (`ResizeObserver` + Framer Motion) that completely prevents empty dead space or layout jumps. Integrated with `POST /api/test-rides` and WhatsApp Concierge handoff.
+- **Bilingual & Bidi Support:** Native English (LTR) and Gulf Arabic (RTL) with `Tajawal` typography and contextual bidi alignment.
+
+---
+
 ## Documentation & Progress
 
-For planned architecture, design decisions, and progress tracking, see [REQUIREMENTS.md](./REQUIREMENTS.md).
+For detailed architecture, design decisions, and block-by-block progress, see:
+- [REQUIREMENTS.md](./REQUIREMENTS.md) — Architectural decisions, RBAC rules & full progress checklist.
+- `docs/phases/` — Phase-by-phase implementation logs and technical specs.

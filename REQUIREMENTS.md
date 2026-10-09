@@ -32,13 +32,18 @@
   - File upload to storage/assets is slated for the final polish phase.
 
 ### Frontend (React 19 + TypeScript + Vite + Tailwind CSS v4)
-- **Design System:** Tailwind v4 CSS-first (`@theme` tokens for obsidian, bronze, telemetry crimson, and typography).
+- **Design System ("Apex Oasis" Tokens):**
+  - Aligned with Stitch MCP design system tokens: 8px container cards (`rounded-[8px]`), 4px buttons/tabs/badges (`rounded-[4px]`), 12px modal dialogs (`rounded-[12px]`).
+  - Tailwind v4 CSS-first (`@theme` tokens for obsidian, bronze/gold, telemetry crimson, and typography).
 - **Public Showroom (`/`):**
-  - Responsive hero with brand switchers and showroom counters.
-  - Multi-brand catalog with segment filters (Performance, Adventure, Urban, Premium).
-  - High-density telemetry spec cards (BHP, Torque, 0-100 km/h, Dry Weight, CC).
-  - Interactive "Book a Test Ride" concierge booking drawer/modal.
-  - GCC Dealership Locator (Dubai, Riyadh, Doha).
+  - Sticky glassmorphic navigation with theme toggle, spring language pill, and test-ride CTA.
+  - Authorized brand marquees selector (Ducati, BMW Motorrad, Vespa, Harley-Davidson) with dynamic filtering.
+  - Responsive hero showcase with dynamic CMS headline, Panigale V4 spotlight, and GCC metrics ribbon.
+  - Multi-brand editorial catalog with 5 segment filters (`ALL`, `PERFORMANCE`, `ADVENTURE`, `URBAN EV`, `HERITAGE`).
+  - High-density dyno cockpit spec cards (BHP, Torque, 0-100 km/h, Dry Weight, CC, starting AED price).
+  - Engineering Telemetry Modal (8-point dyno matrix, multi-angle gallery, interactive factory colorway swatches).
+  - VIP Test-Ride Concierge Wizard (3-step flow + VIP Boarding Pass with dynamic animated height via `ResizeObserver`).
+  - Regional Flagship Hubs & Dealership Locator (Dubai Sheikh Zayed Rd, Riyadh Al Malqa, Doha Lusail Marina) — *Block 6 Upcoming*.
 - **Admin & CMS Portal (`/admin`):**
   - Sanctum login screen.
   - Role-aware dashboard (Admin sees all brands + section toggles; Moderator sees assigned brand).
@@ -49,24 +54,25 @@
 
 ## 3. Implementation Plan & Progress
 
-- [ ] **Phase 1: Backend Foundation (API & DB)**
-  - [ ] Migration: `brands` table
-  - [ ] Migration: `motorcycles` table (specs, telemetry, pricing, category, image URLs)
-  - [ ] Migration: `test_ride_requests` table
-  - [ ] Migration: `cms_settings` table (headers, section visibility toggles)
-  - [ ] Update `users` table (`role`: admin/moderator, `brand_id`: nullable FK)
-  - [ ] Database seeder with 4 brands, rich motorcycle catalog, test ride requests, admin & moderator accounts
-  - [ ] Sanctum SPA authentication configuration & routes
-  - [ ] Policies (`MotorcyclePolicy`, `TestRidePolicy`, `CmsSettingPolicy`)
-  - [ ] REST API Controllers & Form Requests
-- [ ] **Phase 2: Public Showroom Homepage (React + Tailwind v4)**
-  - [ ] Design tokens & typography in Tailwind v4
-  - [ ] Navigation bar with brand marque bar and booking CTA
-  - [ ] Hero showcase section
-  - [ ] Segment filter & dynamic motorcycle catalog grid
-  - [ ] Telemetry & specs modal / drawer
-  - [ ] "Book a Test Ride" interactive form connected to backend API
-  - [ ] Dealership directory & services showcase
+- [x] **Phase 1: Backend Foundation (API & DB)**
+  - [x] Migration: `brands` table
+  - [x] Migration: `motorcycles` table (specs, telemetry, pricing, category, image URLs)
+  - [x] Migration: `test_ride_requests` table
+  - [x] Migration: `cms_settings` table (headers, section visibility toggles)
+  - [x] Update `users` table (`role`: admin/moderator, `brand_id`: nullable FK)
+  - [x] Database seeder with 4 brands, rich motorcycle catalog, test ride requests, admin & moderator accounts
+  - [x] Sanctum SPA authentication configuration & routes
+  - [x] Policies (`MotorcyclePolicy`, `TestRidePolicy`, `CmsSettingPolicy`)
+  - [x] REST API Controllers & Form Requests
+  - [x] Automated Test Suite: 8/8 tests passing with 108 assertions (`tests/Feature/ApiTest.php`)
+- [ ] **Phase 2: Public Showroom Homepage (React + Tailwind v4 + Framer Motion)**
+  - [x] Block 0: Design tokens, typography (Syne + Tajawal + JetBrains Mono), i18n (en/ar RTL), Theme/Locale/Auth contexts
+  - [x] Block 1: Navigation bar with brand marque bar and booking CTA
+  - [x] Block 2: Hero showcase section with Panigale V4 spotlight & GCC metrics ribbon
+  - [x] Block 3: Segment filter & dynamic motorcycle catalog grid (`MotorcycleCard.tsx`, `CatalogSection.tsx`)
+  - [x] Block 4: Telemetry & engineering specs modal with colorway swatches (`TelemetryModal.tsx`)
+  - [x] Block 5: "Book a Test Ride" VIP concierge wizard with animated height & boarding pass (`TestRideModal.tsx`)
+  - [ ] Block 6: Regional Flagship Hubs boutique directory & automotive group footer
 - [ ] **Phase 3: Role-Aware CMS & Admin Portal**
   - [ ] Login screen with CSRF + Sanctum authentication
   - [ ] Admin dashboard view (global stats, brand overview, CMS settings toggles)
