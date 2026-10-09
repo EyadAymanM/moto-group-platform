@@ -6,17 +6,29 @@ A full-stack multi-brand motorcycle digital platform operating across regional s
 
 ## Architecture & Technology Stack
 
-- **Backend:** [Laravel 13](https://laravel.com/) (RESTful API, Sanctum SPA Authentication, Role-based Policies)
+### Core Frameworks & Runtime
+- **Backend:** [Laravel 13](https://laravel.com/) (RESTful API, Sanctum SPA Authentication, Form Requests, RBAC Policies, Eloquent Relationships, Composite Database Indexing)
 - **Frontend:** [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) + [Vite](https://vite.dev/)
-- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) (CSS-first `@theme` configuration)
-- **Database:** SQLite (default for zero-setup evaluation) with MySQL support in `.env.example`
+- **Animation & Physics:** [Framer Motion](https://motion.dev/) (hardware-accelerated page transitions, dynamic `ResizeObserver` height adaptation, layout spring pills) + **HTML5 60 FPS Canvas Physics Engine** (delayed lerp cursor glow, velocity-scaled particle scattering shockwaves, multi-plane 3D parallax scrolling)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) (CSS-first `@theme` configuration, obsidian & desert sand palettes, luxury glassmorphic panels)
+- **Internationalization (i18n):** [i18next](https://www.i18next.com/) with native English (LTR) and Gulf Arabic (RTL) typography (`Tajawal` font)
+- **Database:** SQLite (default for zero-setup evaluation) with seamless MySQL/MariaDB/PostgreSQL support via `.env`
+
+### Design, Tooling & AI-Assisted Engineering
+- **Google Stitch UI Tool (Stitch MCP):** Generated the initial high-contrast technical luxury layout system, component wireframes, and design token hierarchies (8px cards, 4px buttons/tabs/badges, 12px modal dialogs).
+- **Frontend Design Skill (`frontend-design`):** Applied to refine aesthetic direction, crafting the Obsidian (`#0B0F17`) & Desert Sand luxury color palette, fluid directional hover fills (LTR/RTL), tactile button physics, and the non-obstructive background canvas layering (`z-0` beneath `z-10`).
+- **Gemini Flash Vision & Asset Generation:** Used to analyze and generate the custom geometric monogram brand mark (`M` + `G` emblem in gold and crimson), creating transparent dark/light variants and centered browser favicon.
 
 ### Architectural Notes
 - **Authentication:** Uses Laravel Sanctum SPA cookie/session authentication with CSRF protection, chosen because the application operates as a unified web browser client. If native mobile apps (iOS/Android) or external third-party API clients are added in the future, Sanctum Personal Access (Bearer) tokens will be used to bypass cross-origin browser cookie constraints.
+- **Admin & CMS Portal Access Flow:**
+  - Administrative and editorial pages are intentionally hidden from public storefront browsing and accessed directly via the `/admin` path (or via the discrete footer link).
+  - **Dynamic Accessibility for Authenticated Staff:** As soon as an administrator or moderator logs in, an interactive Dashboard access button (`Shield` icon + role badge) dynamically mounts into the primary sticky navigation bar and mobile drawer, providing seamless one-click return to the management cockpit.
+  - **Production Sub-Domain Strategy:** In an enterprise production deployment, the operations console would conventionally be hosted on a dedicated sub-domain (e.g., `admin.motogroup.ae` or `cms.motogroup.ae`) separated by convention and reverse-proxy routing. For simplicity, zero-setup reviewer evaluation, and unified cross-origin cookie sharing on local development environments, it is routed as a dedicated `/admin` path within the SPA.
 - **Role-Based Access Control (RBAC):**
   - **Group Admin:** Full control over global content, headers text, section visibility toggles, all brands, and all data records.
   - **Brand Moderator (Data Entry):** Scoped strictly to an assigned brand (`brand_id`) to manage motorcycle models and review incoming test-ride requests.
-- **Asset Handling:** Initial dataset uses simulated S3/CDN image paths. Data entry forms accept image URL strings, with local/S3 storage file uploads scheduled for the final integration phase.
+- **Asset Handling:** Initial dataset uses simulated S3/CDN image paths. Data entry forms accept image URL strings, with local/S3 storage file uploads scheduled for post-evaluation deployment.
 
 ---
 
@@ -27,6 +39,8 @@ moto-group-platform/
 ├── backend/          # Laravel 13 API (Sanctum SPA, RBAC policies, migrations, seeders)
 ├── frontend/         # React 19 SPA (Public showroom & role-based CMS)
 ├── .agents/          # Antigravity skills & best practices
+├── ERD.md            # Mermaid Entity Relationship Diagram & database schema dictionary
+├── FEATURES.md       # Block table view showcasing all features, buttons & permissions
 ├── REQUIREMENTS.md   # Platform specs, architectural decisions & progress checklist
 └── README.md         # Setup and execution guide
 ```
@@ -38,6 +52,16 @@ moto-group-platform/
 ### Prerequisites
 - PHP 8.3+ (tested on PHP 8.4) with Composer
 - Node.js 20+ (tested on Node 24) with npm
+- Git
+
+---
+
+### 0. Clone the Repository
+
+```bash
+git clone https://github.com/EyadAymanM/moto-group-platform.git
+cd moto-group-platform
+```
 
 ---
 
@@ -136,6 +160,9 @@ Frontend application will be accessible at `http://localhost:5173`.
 
 ## Documentation & Progress
 
-For detailed architecture, design decisions, and block-by-block progress, see:
-- [REQUIREMENTS.md](./REQUIREMENTS.md) — Architectural decisions, RBAC rules & full progress checklist.
+For detailed architecture, design decisions, feature breakdown, and database relationships, see:
+- [ERD.md](./ERD.md) — Mermaid Entity Relationship Diagram, schema dictionary, foreign keys & indexes.
+- [FEATURES.md](./FEATURES.md) — Comprehensive block-by-block feature matrix and interactive button catalog.
+- [REQUIREMENTS.md](./REQUIREMENTS.md) — Architectural decisions, RBAC specifications & full progress checklist.
 - `docs/phases/` — Phase-by-phase implementation logs and technical specs.
+

@@ -45,7 +45,10 @@
   - VIP Test-Ride Concierge Wizard (3-step flow + VIP Boarding Pass with dynamic animated height via `ResizeObserver`).
   - Regional Flagship Hubs & Dealership Locator (Dubai Sheikh Zayed Rd, Riyadh Al Malqa, Doha Lusail Marina) — *Block 6 Upcoming*.
 - **Admin & CMS Portal (`/admin`):**
-  - Sanctum login screen.
+  - **Access Flow & Visibility:** Hidden from public storefront navigation; accessed directly via the `/admin` path (or the discreet footer link).
+  - **Authenticated Accessibility:** Once logged in, an interactive Dashboard access button (`Shield` icon + role badge) dynamically mounts into the sticky navigation bar and mobile drawer for seamless navigation between showroom and cockpit.
+  - **Production Sub-Domain Convention:** In an enterprise production deployment, the management dashboard would conventionally be separated onto a dedicated sub-domain (e.g., `admin.motogroup.ae` or `cms.motogroup.ae`). For local reviewer evaluation simplicity and unified cross-origin session cookies, it is implemented under the `/admin` route within the SPA.
+  - Sanctum login screen (`AdminLoginPage.tsx`).
   - Role-aware dashboard (Admin sees all brands + section toggles; Moderator sees assigned brand).
   - Motorcycle CRUD with live preview.
   - Test-ride lead management (status updates: Pending, Confirmed, Completed).
@@ -88,5 +91,13 @@
   - [x] Directional fill navigation links (LTR/RTL) and tactile luxury button micro-interactions
   - [x] Navbar responsive breakpoint unification at `lg: 1024px` with auto-collapsing mobile menu
   - [x] Dealerships dual-mode media slider streamline (top showroom/map switcher)
-  - [ ] Database ERD diagram & schema documentation
-  - [ ] Image upload handling (local/storage to replace initial URL string inputs)
+  - [x] Database ERD diagram & schema documentation ([ERD.md](./ERD.md))
+  - [x] Granular Feature Matrix & Block Table View Documentation ([FEATURES.md](./FEATURES.md))
+
+---
+
+## 4. Deferred / Future Enhancements (To be implemented in future)
+
+- **Native Image File Upload Pipeline:** Transition from current direct studio CDN/URL string inputs to automated local storage / S3 bucket direct upload pipeline with multipart MIME validation and automatic thumbnail generation.
+- **Biometric / Mobile Auth Tokens:** Add Laravel Sanctum Personal Access (Bearer) token endpoints alongside existing SPA session cookies if native iOS/Android client apps are integrated.
+
