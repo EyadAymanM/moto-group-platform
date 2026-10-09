@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Sun, Moon, Shield, Calendar, Menu, X } from 'lucide-react'
 import { useTheme } from '../../contexts/ThemeContext'
@@ -6,6 +6,7 @@ import { useLocale } from '../../contexts/LocaleContext'
 import { useAuth } from '../../contexts/AuthContext'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'motion/react'
+import { BrandLogo } from '../common/BrandLogo'
 
 interface NavbarProps {
   onOpenTestRideDrawer?: () => void
@@ -17,6 +18,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestRideDrawer }) => {
   const { locale, setLocale } = useLocale()
   const { user } = useAuth()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  // Auto-close mobile drawer when viewport expands to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setMobileMenuOpen(false)
+      }
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault()
@@ -33,42 +45,44 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestRideDrawer }) => {
         <div className="flex items-center justify-between h-20">
           
           {/* Brand Identity / Logo */}
-          <Link to="/" className="flex items-center gap-3 group focus:outline-none">
-            <div className="w-10 h-10 rounded-[4px] bg-theme-elevated border border-theme-focus flex items-center justify-center font-mono font-bold text-lg text-theme-gold shadow-sm group-hover:scale-105 transition-transform duration-200">
-              MG
-            </div>
-            <div className="flex flex-col">
-              <span className="font-display font-extrabold text-xl tracking-tight text-theme-primary leading-none group-hover:text-theme-gold transition-colors">
-                MOTO GROUP
-              </span>
-              <span className="text-[10px] tracking-widest uppercase font-mono text-theme-muted mt-1">
-                MIDDLE EAST // OFFICIAL
-              </span>
-            </div>
+          <Link to="/" className="flex items-center group focus:outline-none" aria-label="Moto Group Home">
+            <BrandLogo variant="mark" size="md" showText={true} />
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8">
+          {/* Desktop Navigation Links with Directional Fill Animation */}
+          <nav className="hidden lg:flex items-center gap-5">
             <a
               href="#marques"
               onClick={(e) => handleScrollTo(e, 'marques')}
-              className="text-sm font-medium text-theme-muted hover:text-theme-gold transition-colors cursor-pointer"
+              className="nav-fill-link group px-3.5 py-1.5 text-sm font-medium text-theme-muted hover:text-theme-primary cursor-pointer"
             >
-              {t('nav.marques')}
+              <span className="nav-fill-bg" aria-hidden="true" />
+              <span className="nav-fill-line" aria-hidden="true" />
+              <span className="relative z-10 transition-colors duration-200 group-hover:text-theme-gold">
+                {t('nav.marques')}
+              </span>
             </a>
             <a
               href="#catalog"
               onClick={(e) => handleScrollTo(e, 'catalog')}
-              className="text-sm font-medium text-theme-muted hover:text-theme-gold transition-colors cursor-pointer"
+              className="nav-fill-link group px-3.5 py-1.5 text-sm font-medium text-theme-muted hover:text-theme-primary cursor-pointer"
             >
-              {t('nav.fleet')}
+              <span className="nav-fill-bg" aria-hidden="true" />
+              <span className="nav-fill-line" aria-hidden="true" />
+              <span className="relative z-10 transition-colors duration-200 group-hover:text-theme-gold">
+                {t('nav.fleet')}
+              </span>
             </a>
             <a
               href="#dealers"
               onClick={(e) => handleScrollTo(e, 'dealers')}
-              className="text-sm font-medium text-theme-muted hover:text-theme-gold transition-colors cursor-pointer"
+              className="nav-fill-link group px-3.5 py-1.5 text-sm font-medium text-theme-muted hover:text-theme-primary cursor-pointer"
             >
-              {t('nav.dealers')}
+              <span className="nav-fill-bg" aria-hidden="true" />
+              <span className="nav-fill-line" aria-hidden="true" />
+              <span className="relative z-10 transition-colors duration-200 group-hover:text-theme-gold">
+                {t('nav.dealers')}
+              </span>
             </a>
           </nav>
 
@@ -78,9 +92,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestRideDrawer }) => {
             {/* Theme Toggle Button */}
             <motion.button
               whileTap={{ scale: 0.92 }}
+              whileHover={{ scale: 1.08 }}
               onClick={toggleTheme}
               aria-label={theme === 'dark' ? t('theme.toggleLight') : t('theme.toggleDark')}
-              className="p-2.5 rounded-[4px] bg-theme-elevated border border-theme-subtle text-theme-muted hover:text-theme-gold hover:border-theme-focus transition-all duration-150 focus:outline-none"
+              className="p-2.5 rounded-[4px] bg-theme-elevated border border-theme-subtle text-theme-muted hover:text-theme-gold hover:border-theme-gold/60 hover:shadow-[0_0_12px_rgba(212,175,55,0.2)] transition-all duration-200 focus:outline-none cursor-pointer"
               title={theme === 'dark' ? 'Light Mode (Desert Sand)' : 'Dark Mode (Obsidian)'}
             >
               <motion.div
@@ -102,7 +117,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestRideDrawer }) => {
               <button
                 type="button"
                 onClick={() => setLocale('en')}
-                className={`relative z-10 px-3 py-1 text-xs font-bold tracking-wider rounded-[4px] transition-colors duration-150 focus:outline-none ${
+                className={`relative z-10 px-3 py-1 text-xs font-bold tracking-wider rounded-[4px] transition-all duration-150 focus:outline-none cursor-pointer hover:scale-[1.03] active:scale-95 ${
                   locale === 'en'
                     ? 'text-slate-950 font-extrabold'
                     : 'text-theme-muted hover:text-theme-primary'
@@ -120,7 +135,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestRideDrawer }) => {
               <button
                 type="button"
                 onClick={() => setLocale('ar')}
-                className={`relative z-10 px-3 py-1 text-xs font-bold font-arabic rounded-[4px] transition-colors duration-150 focus:outline-none ${
+                className={`relative z-10 px-3 py-1 text-xs font-bold font-arabic rounded-[4px] transition-all duration-150 focus:outline-none cursor-pointer hover:scale-[1.03] active:scale-95 ${
                   locale === 'ar'
                     ? 'text-slate-950 font-extrabold'
                     : 'text-theme-muted hover:text-theme-primary'
@@ -141,7 +156,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestRideDrawer }) => {
             {user && (
               <Link
                 to="/admin"
-                className="flex items-center gap-2 px-3.5 py-2 rounded-[4px] bg-theme-elevated border border-theme-gold/40 text-xs font-mono text-theme-gold hover:bg-theme-gold/10 transition-colors"
+                className="btn-luxury-ghost flex items-center gap-2 px-3.5 py-2 rounded-[4px] border-theme-gold/40 text-xs font-mono text-theme-gold hover:bg-theme-gold/10 hover:border-theme-gold shadow-sm"
                 title="Go to CMS Dashboard"
               >
                 <Shield className="w-3.5 h-3.5 text-theme-gold" />
@@ -154,29 +169,31 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestRideDrawer }) => {
             {/* VIP Test Ride CTA Button */}
             <button
               onClick={onOpenTestRideDrawer}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-[4px] bg-theme-gold text-slate-950 font-semibold text-xs tracking-wide uppercase hover:brightness-110 active:scale-[0.98] transition-all shadow-sm focus:outline-none"
+              className="btn-luxury-gold group flex items-center gap-2 px-5 py-2.5 rounded-[4px] text-xs tracking-wide uppercase shadow-sm focus:outline-none"
             >
-              <Calendar className="w-4 h-4" />
+              <Calendar className="w-4 h-4 transition-transform duration-200 group-hover:scale-110" />
               <span>{t('nav.bookTestRide')}</span>
             </button>
           </div>
 
           {/* Mobile Controls (Theme, Language, Hamburger) */}
           <div className="flex lg:hidden items-center gap-2">
-            <button
+            <motion.button
+              whileTap={{ scale: 0.92 }}
+              whileHover={{ scale: 1.08 }}
               onClick={toggleTheme}
-              className="p-2 rounded-[4px] bg-theme-elevated border border-theme-subtle text-theme-muted"
+              className="p-2 rounded-[4px] bg-theme-elevated border border-theme-subtle text-theme-muted hover:text-theme-gold hover:border-theme-gold/50 cursor-pointer transition-all"
             >
               {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4" />}
-            </button>
+            </motion.button>
 
             {/* Mobile Language Switcher */}
             <div className="relative inline-flex items-center p-0.5 rounded-[4px] bg-theme-elevated border border-theme-subtle text-xs font-mono select-none">
               <button
                 type="button"
                 onClick={() => setLocale('en')}
-                className={`relative z-10 px-2 py-1 text-[11px] font-bold rounded-[3px] transition-colors duration-150 ${
-                  locale === 'en' ? 'text-slate-950 font-bold' : 'text-theme-muted'
+                className={`relative z-10 px-2 py-1 text-[11px] font-bold rounded-[3px] transition-colors duration-150 cursor-pointer ${
+                  locale === 'en' ? 'text-slate-950 font-bold' : 'text-theme-muted hover:text-theme-primary'
                 }`}
               >
                 {locale === 'en' && (
@@ -191,8 +208,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestRideDrawer }) => {
               <button
                 type="button"
                 onClick={() => setLocale('ar')}
-                className={`relative z-10 px-2 py-1 text-[11px] font-bold font-arabic rounded-[3px] transition-colors duration-150 ${
-                  locale === 'ar' ? 'text-slate-950 font-bold' : 'text-theme-muted'
+                className={`relative z-10 px-2 py-1 text-[11px] font-bold font-arabic rounded-[3px] transition-colors duration-150 cursor-pointer ${
+                  locale === 'ar' ? 'text-slate-950 font-bold' : 'text-theme-muted hover:text-theme-primary'
                 }`}
               >
                 {locale === 'ar' && (
@@ -209,9 +226,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestRideDrawer }) => {
             {/* Animated Hamburger Button */}
             <motion.button
               whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.06 }}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle Navigation Menu"
-              className="p-2 rounded-[4px] bg-theme-elevated border border-theme-subtle text-theme-muted hover:text-theme-primary focus:outline-none"
+              className="p-2 rounded-[4px] bg-theme-elevated border border-theme-subtle text-theme-muted hover:text-theme-primary hover:border-theme-gold/50 focus:outline-none cursor-pointer transition-all"
             >
               <motion.div
                 animate={{ rotate: mobileMenuOpen ? 90 : 0 }}
@@ -239,29 +257,41 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestRideDrawer }) => {
               <a
                 href="#marques"
                 onClick={(e) => handleScrollTo(e, 'marques')}
-                className="px-3 py-2 rounded text-sm text-theme-muted hover:text-theme-gold hover:bg-theme-elevated transition-colors cursor-pointer"
+                className="nav-fill-link group px-4 py-2.5 rounded text-sm text-theme-muted hover:text-theme-primary cursor-pointer w-full text-start"
               >
-                {t('nav.marques')}
+                <span className="nav-fill-bg" aria-hidden="true" />
+                <span className="nav-fill-line" aria-hidden="true" />
+                <span className="relative z-10 transition-colors duration-200 group-hover:text-theme-gold">
+                  {t('nav.marques')}
+                </span>
               </a>
               <a
                 href="#catalog"
                 onClick={(e) => handleScrollTo(e, 'catalog')}
-                className="px-3 py-2 rounded text-sm text-theme-muted hover:text-theme-gold hover:bg-theme-elevated transition-colors cursor-pointer"
+                className="nav-fill-link group px-4 py-2.5 rounded text-sm text-theme-muted hover:text-theme-primary cursor-pointer w-full text-start"
               >
-                {t('nav.fleet')}
+                <span className="nav-fill-bg" aria-hidden="true" />
+                <span className="nav-fill-line" aria-hidden="true" />
+                <span className="relative z-10 transition-colors duration-200 group-hover:text-theme-gold">
+                  {t('nav.fleet')}
+                </span>
               </a>
               <a
                 href="#dealers"
                 onClick={(e) => handleScrollTo(e, 'dealers')}
-                className="px-3 py-2 rounded text-sm text-theme-muted hover:text-theme-gold hover:bg-theme-elevated transition-colors cursor-pointer"
+                className="nav-fill-link group px-4 py-2.5 rounded text-sm text-theme-muted hover:text-theme-primary cursor-pointer w-full text-start"
               >
-                {t('nav.dealers')}
+                <span className="nav-fill-bg" aria-hidden="true" />
+                <span className="nav-fill-line" aria-hidden="true" />
+                <span className="relative z-10 transition-colors duration-200 group-hover:text-theme-gold">
+                  {t('nav.dealers')}
+                </span>
               </a>
               {user && (
                 <Link
                   to="/admin"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-3 py-2.5 rounded bg-theme-elevated border border-theme-gold/40 text-xs font-mono text-theme-gold flex items-center justify-between"
+                  className="btn-luxury-ghost px-4 py-2.5 rounded border border-theme-gold/40 text-xs font-mono text-theme-gold flex items-center justify-between w-full"
                 >
                   <div className="flex items-center gap-2">
                     <Shield className="w-4 h-4 text-theme-gold" />
@@ -281,7 +311,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestRideDrawer }) => {
                 setMobileMenuOpen(false)
                 if (onOpenTestRideDrawer) onOpenTestRideDrawer()
               }}
-              className="w-full mt-2 flex items-center justify-center gap-2 py-3 rounded-[4px] bg-theme-gold text-slate-950 font-bold text-xs uppercase tracking-wider"
+              className="btn-luxury-gold w-full mt-2 flex items-center justify-center gap-2 py-3 rounded-[4px] text-xs uppercase tracking-wider shadow-md"
             >
               <Calendar className="w-4 h-4" />
               <span>{t('nav.bookTestRide')}</span>

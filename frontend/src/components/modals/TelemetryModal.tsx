@@ -153,7 +153,7 @@ export const TelemetryModal: React.FC<TelemetryModalProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="p-1.5 rounded-[4px] bg-theme-base border border-theme-subtle text-theme-muted hover:text-theme-primary hover:border-theme-focus transition-all cursor-pointer"
+              className="p-1.5 rounded-[4px] bg-theme-base border border-theme-subtle text-theme-muted hover:text-theme-primary hover:border-theme-gold/60 hover:scale-110 active:scale-90 transition-all cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
@@ -294,7 +294,7 @@ export const TelemetryModal: React.FC<TelemetryModalProps> = ({
                     onClose()
                     onBookRide(motorcycle)
                   }}
-                  className="w-full py-3.5 px-4 rounded-[4px] bg-theme-gold hover:brightness-110 active:scale-[0.98] text-slate-950 font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg shadow-amber-500/10 cursor-pointer"
+                  className="btn-luxury-gold w-full py-3.5 px-4 rounded-[4px] text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-amber-500/10 cursor-pointer"
                 >
                   <Calendar className="w-4 h-4" />
                   <span>{t('telemetry.reserveBtn')}</span>

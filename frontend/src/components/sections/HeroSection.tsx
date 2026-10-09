@@ -49,7 +49,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         {/* Left Column: Editorial & Vision */}
         <div className="lg:col-span-7 flex flex-col items-start w-full">
           <ScrollReveal delay={0.05} direction="down">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[4px] bg-theme-elevated border border-theme-subtle mb-6 text-xs font-mono text-theme-gold shadow-sm">
+            <div className="pill-interactive inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[4px] bg-theme-elevated border border-theme-subtle hover:border-theme-gold/40 mb-6 text-xs font-mono text-theme-gold shadow-sm">
               <Sparkles className="w-3.5 h-3.5" />
               <span>{t('hero.badge')}</span>
             </div>
@@ -78,16 +78,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <a
                 href="#catalog"
                 onClick={onExploreFleet}
-                className="px-6 py-3.5 rounded-[4px] bg-theme-gold text-slate-950 font-bold text-xs uppercase tracking-wider hover:brightness-110 active:scale-[0.98] transition-all flex items-center gap-2 shadow-lg shadow-amber-500/10"
+                className="btn-luxury-gold group px-6 py-3.5 rounded-[4px] text-xs uppercase tracking-wider flex items-center gap-2 shadow-lg"
               >
                 <span>{t('hero.exploreFleet')}</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1.5 rtl:group-hover:-translate-x-1.5" />
               </a>
 
               <button
                 type="button"
                 onClick={onBookTestRide}
-                className="px-6 py-3.5 rounded-[4px] bg-theme-elevated border border-theme-subtle text-theme-primary font-semibold text-xs uppercase tracking-wider hover:border-theme-focus active:scale-[0.98] transition-all shadow-sm"
+                className="btn-luxury-ghost px-6 py-3.5 rounded-[4px] text-xs uppercase tracking-wider font-semibold shadow-sm"
               >
                 {t('hero.reserveSlot')}
               </button>
@@ -112,7 +112,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         {/* Right Column: Architectural Flagship Showcase Card */}
         <div className="lg:col-span-5 relative w-full max-w-md lg:max-w-none mx-auto">
           <ScrollReveal delay={0.2} direction="left">
-            <div className="relative rounded-[8px] bg-gradient-to-b from-theme-elevated to-theme-surface border border-theme-subtle p-6 overflow-hidden shadow-2xl group">
+            <div className="relative rounded-[8px] bg-gradient-to-b from-theme-elevated to-theme-surface border border-theme-subtle hover:border-theme-gold/50 p-6 overflow-hidden shadow-2xl hover:shadow-[0_20px_45px_rgba(0,0,0,0.5)] group transition-all duration-300">
               
               {/* Card Header & Marque Seal */}
               <div className="flex items-center justify-between border-b border-theme-subtle pb-4">
@@ -120,7 +120,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   <span className="text-[10px] font-mono tracking-widest uppercase text-theme-gold block">
                     FLAGSHIP SPOTLIGHT // 2026
                   </span>
-                  <h3 className="font-display font-bold text-xl text-theme-primary mt-0.5">
+                  <h3 className="font-display font-bold text-xl text-theme-primary mt-0.5 group-hover:text-theme-gold transition-colors duration-200">
                     Ducati Panigale V4 S
                   </h3>
                 </div>
@@ -136,12 +136,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <img
                   src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=800&q=80"
                   alt="Ducati Panigale V4 S"
-                  className="w-full h-48 object-cover rounded-[4px] filter saturate-[1.1] contrast-[1.05] group-hover:scale-[1.02] transition-transform duration-500"
+                  className="w-full h-48 object-cover rounded-[4px] filter saturate-[1.1] contrast-[1.05] group-hover:scale-[1.03] transition-transform duration-500"
                   loading="lazy"
                 />
 
                 {/* Performance HUD badge */}
-                <div className="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-[4px] border border-white/10 text-white flex items-center gap-2">
+                <div className="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-[4px] border border-white/10 text-white flex items-center gap-2 shadow-sm group-hover:border-theme-gold/40 transition-colors">
                   <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
                   <span className="text-[10px] font-mono tracking-wider uppercase font-bold">
                     Desmosedici Stradale
@@ -151,7 +151,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
               {/* Floating Live Telemetry Grid */}
               <div className="grid grid-cols-3 gap-2.5 pt-2 border-t border-theme-subtle">
-                <div className="p-3 rounded-[4px] bg-theme-base border border-theme-subtle text-center">
+                <div className="p-3 rounded-[4px] bg-theme-base border border-theme-subtle hover:border-theme-gold/40 hover:bg-theme-surface/80 hover:-translate-y-0.5 transition-all duration-200 text-center cursor-default">
                   <div className="flex items-center justify-center gap-1 text-theme-gold text-[10px] font-mono uppercase">
                     <Zap className="w-3 h-3" />
                     <span>Power</span>
@@ -161,7 +161,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   </div>
                 </div>
 
-                <div className="p-3 rounded-[4px] bg-theme-base border border-theme-subtle text-center">
+                <div className="p-3 rounded-[4px] bg-theme-base border border-theme-subtle hover:border-theme-crimson/40 hover:bg-theme-surface/80 hover:-translate-y-0.5 transition-all duration-200 text-center cursor-default">
                   <div className="flex items-center justify-center gap-1 text-theme-crimson text-[10px] font-mono uppercase">
                     <Gauge className="w-3 h-3" />
                     <span>0-100</span>
@@ -171,7 +171,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   </div>
                 </div>
 
-                <div className="p-3 rounded-[4px] bg-theme-base border border-theme-subtle text-center">
+                <div className="p-3 rounded-[4px] bg-theme-base border border-theme-subtle hover:border-theme-gold/40 hover:bg-theme-surface/80 hover:-translate-y-0.5 transition-all duration-200 text-center cursor-default">
                   <div className="flex items-center justify-center gap-1 text-theme-muted text-[10px] font-mono uppercase">
                     <Compass className="w-3 h-3" />
                     <span>Engine</span>
@@ -191,7 +191,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* Regional Showroom Metric Ribbon */}
       <ScrollReveal delay={0.3}>
         <div className="mt-16 pt-8 border-t border-theme-subtle grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="p-4 rounded-[4px] bg-theme-surface/40 border border-theme-subtle">
+          <div className="p-4 rounded-[4px] bg-theme-surface/40 hover:bg-theme-surface/80 border border-theme-subtle hover:border-theme-gold/40 hover:-translate-y-1 transition-all duration-200 shadow-sm cursor-default">
             <span className="text-2xl sm:text-3xl font-display font-extrabold text-theme-primary block telemetry-val">
               4
             </span>
@@ -200,7 +200,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </span>
           </div>
 
-          <div className="p-4 rounded-[4px] bg-theme-surface/40 border border-theme-subtle">
+          <div className="p-4 rounded-[4px] bg-theme-surface/40 hover:bg-theme-surface/80 border border-theme-subtle hover:border-theme-gold/40 hover:-translate-y-1 transition-all duration-200 shadow-sm cursor-default">
             <span className="text-2xl sm:text-3xl font-display font-extrabold text-theme-gold block telemetry-val">
               10+
             </span>
@@ -209,7 +209,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </span>
           </div>
 
-          <div className="p-4 rounded-[4px] bg-theme-surface/40 border border-theme-subtle">
+          <div className="p-4 rounded-[4px] bg-theme-surface/40 hover:bg-theme-surface/80 border border-theme-subtle hover:border-theme-gold/40 hover:-translate-y-1 transition-all duration-200 shadow-sm cursor-default">
             <span className="text-2xl sm:text-3xl font-display font-extrabold text-theme-primary block telemetry-val">
               3
             </span>
@@ -218,7 +218,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </span>
           </div>
 
-          <div className="p-4 rounded-[4px] bg-theme-surface/40 border border-theme-subtle">
+          <div className="p-4 rounded-[4px] bg-theme-surface/40 hover:bg-theme-surface/80 border border-theme-subtle hover:border-theme-crimson/40 hover:-translate-y-1 transition-all duration-200 shadow-sm cursor-default">
             <span className="text-2xl sm:text-3xl font-display font-extrabold text-theme-crimson block telemetry-val">
               100%
             </span>

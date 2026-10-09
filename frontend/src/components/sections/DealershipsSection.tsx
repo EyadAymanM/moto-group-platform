@@ -7,8 +7,6 @@ import {
   Sparkles,
   Camera,
   MapPin,
-  ChevronLeft,
-  ChevronRight,
 } from 'lucide-react'
 
 export type CityKey = 'Dubai' | 'Riyadh' | 'Doha'
@@ -89,10 +87,6 @@ export const DealershipsSection: React.FC<DealershipsSectionProps> = ({
 
   const currentBoutique = boutiques[activeCity]
 
-  const toggleSlide = () => {
-    setActiveSlide((prev) => (prev === 'image' ? 'map' : 'image'))
-  }
-
   return (
     <section id="dealers" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full scroll-mt-20">
       {/* Flagship Showroom Card Container (Stitch MCP 8px container) */}
@@ -108,7 +102,7 @@ export const DealershipsSection: React.FC<DealershipsSectionProps> = ({
                 <button
                   type="button"
                   onClick={() => setActiveSlide('image')}
-                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-[4px] transition-all cursor-pointer ${
+                  className={`pill-interactive flex items-center gap-1.5 px-2.5 py-1 rounded-[4px] transition-all cursor-pointer ${
                     activeSlide === 'image'
                       ? 'bg-theme-gold text-slate-950 font-bold shadow-sm'
                       : 'text-slate-300 hover:text-white'
@@ -120,7 +114,7 @@ export const DealershipsSection: React.FC<DealershipsSectionProps> = ({
                 <button
                   type="button"
                   onClick={() => setActiveSlide('map')}
-                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-[4px] transition-all cursor-pointer ${
+                  className={`pill-interactive flex items-center gap-1.5 px-2.5 py-1 rounded-[4px] transition-all cursor-pointer ${
                     activeSlide === 'map'
                       ? 'bg-theme-gold text-slate-950 font-bold shadow-sm'
                       : 'text-slate-300 hover:text-white'
@@ -130,24 +124,6 @@ export const DealershipsSection: React.FC<DealershipsSectionProps> = ({
                   <span>{t('dealers.mediaMap', 'Interactive Map')}</span>
                 </button>
               </div>
-
-              {/* Arrow Carousel Navigation Controls */}
-              <button
-                type="button"
-                onClick={toggleSlide}
-                aria-label="Previous Slide"
-                className="absolute start-3 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-slate-950/75 hover:bg-slate-950 border border-white/10 text-white/80 hover:text-white backdrop-blur-md transition-all cursor-pointer shadow-lg hover:scale-105 active:scale-95"
-              >
-                <ChevronLeft className="w-4 h-4 rtl:rotate-180" />
-              </button>
-              <button
-                type="button"
-                onClick={toggleSlide}
-                aria-label="Next Slide"
-                className="absolute end-3 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-slate-950/75 hover:bg-slate-950 border border-white/10 text-white/80 hover:text-white backdrop-blur-md transition-all cursor-pointer shadow-lg hover:scale-105 active:scale-95"
-              >
-                <ChevronRight className="w-4 h-4 rtl:rotate-180" />
-              </button>
 
               {/* Slide Content Viewport with Motion Crossfade & Scale */}
               <AnimatePresence mode="wait">
@@ -239,10 +215,10 @@ export const DealershipsSection: React.FC<DealershipsSectionProps> = ({
                     key={city}
                     type="button"
                     onClick={() => setActiveCity(city)}
-                    className={`px-4 py-1.5 rounded-[4px] text-xs font-mono uppercase tracking-wider transition-all cursor-pointer ${
+                    className={`pill-interactive px-4 py-1.5 rounded-[4px] text-xs font-mono uppercase tracking-wider transition-all cursor-pointer ${
                       isActive
-                        ? 'bg-theme-gold text-slate-950 font-bold shadow-sm'
-                        : 'bg-theme-base border border-theme-subtle text-theme-muted hover:text-theme-primary hover:border-theme-focus'
+                        ? 'btn-luxury-gold shadow-sm font-bold'
+                        : 'btn-luxury-ghost text-theme-muted hover:text-theme-primary'
                     }`}
                   >
                     {t(`dealers.${city.toLowerCase()}.city`, city)}
@@ -285,9 +261,9 @@ export const DealershipsSection: React.FC<DealershipsSectionProps> = ({
                   <button
                     type="button"
                     onClick={() => onReserveLounge(currentBoutique.key)}
-                    className="w-full py-3.5 px-5 rounded-[4px] bg-theme-base hover:bg-theme-surface border border-theme-subtle hover:border-theme-gold text-theme-primary hover:text-theme-gold font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm group active:scale-[0.99]"
+                    className="btn-luxury-ghost group w-full py-3.5 px-5 rounded-[4px] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:border-theme-gold hover:text-theme-gold"
                   >
-                    <Sparkles className="w-3.5 h-3.5 text-theme-gold transition-transform group-hover:rotate-12" />
+                    <Sparkles className="w-3.5 h-3.5 text-theme-gold transition-transform duration-200 group-hover:rotate-12 group-hover:scale-110" />
                     <span>{t('dealers.reserveLounge', 'Reserve the VIP private lounge')}</span>
                   </button>
 
@@ -296,10 +272,10 @@ export const DealershipsSection: React.FC<DealershipsSectionProps> = ({
                     href={currentBoutique.mapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3 px-5 rounded-[4px] bg-transparent hover:bg-theme-base border border-theme-subtle hover:border-theme-focus text-theme-muted hover:text-theme-primary font-medium text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 cursor-pointer text-center"
+                    className="btn-luxury-ghost group w-full py-3 px-5 rounded-[4px] text-theme-muted hover:text-theme-primary font-medium text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 cursor-pointer text-center"
                   >
                     <span>{t('dealers.directions', 'Directions')}</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
+                    <ExternalLink className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </a>
                 </div>
               </motion.div>

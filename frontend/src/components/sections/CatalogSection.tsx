@@ -158,10 +158,10 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
           <button
             type="button"
             onClick={() => onSelectBrand(null)}
-            className={`px-3 py-1.5 rounded-[4px] text-xs font-mono uppercase tracking-wider transition-all cursor-pointer ${
+            className={`pill-interactive px-3.5 py-1.5 rounded-[4px] text-xs font-mono uppercase tracking-wider transition-all cursor-pointer ${
               selectedBrandId === null
-                ? 'bg-theme-gold text-slate-950 font-bold shadow-sm'
-                : 'bg-theme-elevated border border-theme-subtle text-theme-muted hover:text-theme-primary hover:border-theme-focus'
+                ? 'btn-luxury-gold shadow-sm font-bold'
+                : 'btn-luxury-ghost text-theme-muted hover:text-theme-primary'
             }`}
           >
             {t('catalog.allMarques')}
@@ -173,10 +173,10 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
                 key={brand.id}
                 type="button"
                 onClick={() => onSelectBrand(isSelected ? null : brand.id)}
-                className={`px-3 py-1.5 rounded-[4px] text-xs font-mono uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5 ${
+                className={`pill-interactive px-3.5 py-1.5 rounded-[4px] text-xs font-mono uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5 ${
                   isSelected
-                    ? 'bg-theme-gold text-slate-950 font-bold shadow-sm'
-                    : 'bg-theme-elevated border border-theme-subtle text-theme-muted hover:text-theme-primary hover:border-theme-focus'
+                    ? 'btn-luxury-gold shadow-sm font-bold'
+                    : 'btn-luxury-ghost text-theme-muted hover:text-theme-primary'
                 }`}
               >
                 <span>{brand.name}</span>
@@ -199,8 +199,8 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
                 key={cat}
                 type="button"
                 onClick={() => setSelectedCategory(cat)}
-                className={`relative px-4 py-2.5 rounded-[4px] text-xs font-mono uppercase tracking-wider whitespace-nowrap transition-colors cursor-pointer ${
-                  isActive ? 'text-theme-primary font-bold' : 'text-theme-muted hover:text-theme-primary'
+                className={`pill-interactive relative px-4 py-2.5 rounded-[4px] text-xs font-mono uppercase tracking-wider whitespace-nowrap transition-colors cursor-pointer ${
+                  isActive ? 'text-theme-primary font-bold' : 'text-theme-muted hover:text-theme-primary hover:bg-theme-elevated/40'
                 }`}
               >
                 {isActive && (

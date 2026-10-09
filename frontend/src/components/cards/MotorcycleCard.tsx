@@ -33,8 +33,9 @@ export const MotorcycleCard: React.FC<MotorcycleCardProps> = ({
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.98 }}
+      whileHover={{ y: -4, transition: { duration: 0.22, ease: [0.16, 1, 0.3, 1] } }}
       transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative flex flex-col justify-between rounded-[8px] bg-gradient-to-b from-theme-elevated to-theme-surface border border-theme-subtle hover:border-theme-focus transition-all duration-300 shadow-xl overflow-hidden"
+      className="group relative flex flex-col justify-between rounded-[8px] bg-gradient-to-b from-theme-elevated to-theme-surface border border-theme-subtle hover:border-theme-gold/60 transition-all duration-300 shadow-xl hover:shadow-2xl overflow-hidden"
     >
       {/* Top Hairline Accent Highlight */}
       <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-theme-gold/30 to-transparent group-hover:via-theme-gold transition-all duration-300" />
@@ -178,14 +179,14 @@ export const MotorcycleCard: React.FC<MotorcycleCardProps> = ({
             <button
               type="button"
               onClick={() => onSelectTelemetry(motorcycle)}
-              className="py-2.5 px-3 rounded-[4px] bg-theme-base border border-theme-subtle hover:border-theme-focus text-theme-primary font-semibold text-xs uppercase tracking-wider transition-all text-center flex items-center justify-center active:scale-[0.98] cursor-pointer"
+              className="btn-luxury-ghost py-2.5 px-3 rounded-[4px] text-theme-primary font-semibold text-xs uppercase tracking-wider text-center flex items-center justify-center cursor-pointer shadow-sm"
             >
               <span>{t('catalog.viewSpecs')}</span>
             </button>
             <button
               type="button"
               onClick={() => onBookRide(motorcycle)}
-              className="py-2.5 px-3 rounded-[4px] bg-theme-gold hover:brightness-110 text-slate-950 text-xs font-bold uppercase tracking-wider transition-all text-center flex items-center justify-center shadow-md shadow-amber-500/10 active:scale-[0.98] cursor-pointer"
+              className="btn-luxury-gold py-2.5 px-3 rounded-[4px] text-xs font-bold uppercase tracking-wider text-center flex items-center justify-center shadow-md shadow-amber-500/10 cursor-pointer"
             >
               <span>{t('catalog.bookRide')}</span>
             </button>

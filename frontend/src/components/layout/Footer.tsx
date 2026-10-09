@@ -5,6 +5,7 @@ import { useAuth } from '../../contexts/AuthContext'
 import { Link } from 'react-router-dom'
 import { ShieldCheck, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'motion/react'
+import { BrandLogo } from '../common/BrandLogo'
 
 export const Footer: React.FC = () => {
   const { t } = useTranslation()
@@ -50,13 +51,16 @@ export const Footer: React.FC = () => {
           {/* =========================================================================
               LEFT: Group Name · Regional Cities & Copyright
               ========================================================================= */}
-          <div className="text-center sm:text-start space-y-1">
-            <p className="font-semibold text-theme-primary">
-              MOTO GROUP · Dubai · Riyadh · Doha
-            </p>
-            <p className="font-mono text-[11px] text-theme-muted">
-              © {new Date().getFullYear()} MOTO GROUP. {t('footer.rights', 'All rights reserved.')}
-            </p>
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 text-center sm:text-start">
+            <BrandLogo variant="mark" size="sm" showText={false} className="opacity-90 hover:opacity-100 transition-opacity" />
+            <div className="space-y-1">
+              <p className="font-semibold text-theme-primary">
+                MOTO GROUP · Dubai · Riyadh · Doha
+              </p>
+              <p className="font-mono text-[11px] text-theme-muted">
+                © {new Date().getFullYear()} MOTO GROUP. {t('footer.rights', 'All rights reserved.')}
+              </p>
+            </div>
           </div>
 
           {/* =========================================================================
@@ -70,7 +74,7 @@ export const Footer: React.FC = () => {
             <button
               type="button"
               onClick={toggleLanguage}
-              className="text-theme-primary hover:text-theme-gold transition-colors font-bold cursor-pointer"
+              className="pill-interactive text-theme-primary hover:text-theme-gold transition-colors font-bold cursor-pointer"
             >
               EN | العربية
             </button>
@@ -82,7 +86,7 @@ export const Footer: React.FC = () => {
               type="button"
               onClick={() => setPopover(prev => (prev === 'privacy' ? null : 'privacy'))}
               aria-expanded={popover === 'privacy'}
-              className={`transition-colors cursor-pointer ${
+              className={`pill-interactive transition-colors cursor-pointer ${
                 popover === 'privacy'
                   ? 'text-theme-gold font-bold underline underline-offset-4 decoration-theme-gold/60'
                   : 'hover:text-theme-primary'
@@ -98,7 +102,7 @@ export const Footer: React.FC = () => {
               type="button"
               onClick={() => setPopover(prev => (prev === 'terms' ? null : 'terms'))}
               aria-expanded={popover === 'terms'}
-              className={`transition-colors cursor-pointer ${
+              className={`pill-interactive transition-colors cursor-pointer ${
                 popover === 'terms'
                   ? 'text-theme-gold font-bold underline underline-offset-4 decoration-theme-gold/60'
                   : 'hover:text-theme-primary'
@@ -183,7 +187,7 @@ export const Footer: React.FC = () => {
                         type="button"
                         onClick={() => setPopover(null)}
                         aria-label={t('footer.close', 'Close')}
-                        className="p-1 rounded-[4px] bg-theme-base border border-theme-subtle text-theme-muted hover:text-theme-primary transition-colors cursor-pointer"
+                        className="p-1 rounded-[4px] bg-theme-base border border-theme-subtle text-theme-muted hover:text-theme-primary hover:border-theme-gold/60 hover:scale-110 active:scale-90 transition-all cursor-pointer"
                       >
                         <X className="w-3.5 h-3.5" />
                       </button>

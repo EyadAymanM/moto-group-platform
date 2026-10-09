@@ -10,7 +10,6 @@ import {
   ChevronLeft,
   Sparkles,
   Zap,
-  Shield,
   Layers,
   MapPin,
   Bike,
@@ -18,6 +17,7 @@ import {
   ArrowRight,
 } from 'lucide-react'
 import { motion } from 'motion/react'
+import { BrandLogo } from '../common/BrandLogo'
 
 interface LivePreviewDrawerProps {
   draftSettings: CmsSettings
@@ -156,12 +156,7 @@ export const LivePreviewDrawer: React.FC<LivePreviewDrawerProps> = ({
             <div className="rounded-[6px] bg-theme-surface border border-theme-subtle p-2.5 space-y-1.5 shadow-sm">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-1.5">
-                  <div className="w-5 h-5 rounded-[3px] bg-theme-elevated border border-theme-subtle flex items-center justify-center text-theme-gold">
-                    <Shield className="w-3 h-3" />
-                  </div>
-                  <span className="font-display font-bold text-[10px] tracking-wide text-theme-primary">
-                    MOTO GROUP
-                  </span>
+                  <BrandLogo variant="mark" size="sm" showText={true} subtitle="" />
                 </div>
 
                 <div className="flex items-center gap-2 text-[9px] font-mono">

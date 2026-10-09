@@ -82,7 +82,11 @@
   - [x] Storefront CMS visual editor with live preview drawer & explicit save/publish workflow (`CmsSettingsView.tsx`, `LivePreviewDrawer.tsx`)
   - [x] Complete dashboard localization (English & Gulf Arabic RTL) across all views, tables, forms, and drawers
   - [x] Dual-mode light/dark theme switcher across operations cockpit top bar, mobile drawers, and portal login
-- [ ] **Phase 4: Polish & Integration**
+- [x] **Phase 4: Polish & Integration**
+  - [x] Atmospheric living canvas backdrop (`InteractiveBackdrop.tsx`) with delayed cursor tracking, kinetic particle scattering, and multi-plane scroll parallax
+  - [x] Custom brand identity (`BrandLogo.tsx`) with transparent SVG/PNG variants and centered browser favicon
+  - [x] Directional fill navigation links (LTR/RTL) and tactile luxury button micro-interactions
+  - [x] Navbar responsive breakpoint unification at `lg: 1024px` with auto-collapsing mobile menu
+  - [x] Dealerships dual-mode media slider streamline (top showroom/map switcher)
   - [ ] Database ERD diagram & schema documentation
   - [ ] Image upload handling (local/storage to replace initial URL string inputs)
-  - [ ] Micro-interactions & animations (spec telemetry, booking feedback)

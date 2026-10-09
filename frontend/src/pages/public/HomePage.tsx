@@ -8,6 +8,7 @@ import { Footer } from '../../components/layout/Footer'
 import { TelemetryModal } from '../../components/modals/TelemetryModal'
 import { TestRideModal } from '../../components/modals/TestRideModal'
 import { ScrollReveal } from '../../components/common/ScrollReveal'
+import { InteractiveBackdrop } from '../../components/common/InteractiveBackdrop'
 import { api } from '../../services/api'
 import type { Brand, CmsSettings, Motorcycle } from '../../types'
 import { useLocale } from '../../contexts/LocaleContext'
@@ -48,7 +49,10 @@ export const HomePage: React.FC = () => {
   }, [])
 
   return (
-    <div className="min-h-screen bg-theme-base text-theme-primary flex flex-col transition-colors duration-200">
+    <div className="relative min-h-screen bg-theme-base text-theme-primary flex flex-col transition-colors duration-200">
+      {/* Living Atmospheric Backdrop with Delayed Cursor & Scattering Particles (strictly behind all components) */}
+      <InteractiveBackdrop />
+
       {/* Sticky Navigation Bar */}
       <Navbar onOpenTestRideDrawer={() => setIsTestRideModalOpen(true)} />
 
@@ -60,7 +64,7 @@ export const HomePage: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -6 }}
           transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-          className="flex-1"
+          className="relative z-10 flex-1"
         >
           {/* Section: Authorized Brand Marquees Bar */}
           {cmsSettings?.section_visibility?.brand_marques_bar !== false && (
@@ -143,7 +147,9 @@ export const HomePage: React.FC = () => {
       </AnimatePresence>
 
       {/* Block 6: Regional Automotive Group Footer */}
-      <Footer />
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </div>
   )
 }

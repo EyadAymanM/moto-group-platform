@@ -99,18 +99,33 @@ Frontend application will be accessible at `http://localhost:5173`.
 ## Implemented Platform Highlights
 
 ### Technical Luxury Public Showroom (`/`)
+- **Living Atmospheric Canvas Backdrop (`InteractiveBackdrop.tsx`):**
+  - **Hardware-Accelerated HTML5 Canvas:** Renders at 60 FPS behind all UI layers (`fixed inset-0 pointer-events-none z-0`) with retina DPR scaling.
+  - **Delayed Mouse Cursor Glow:** Smooth exponential lerping (`lerpFactor = 0.075`) creates a soft radial aurora glow (`#D4AF37` gold and `#FF334B` crimson) trailing naturally behind the pointer.
+  - **Kinetic Particle Scattering:** Particles within 150px of the delayed cursor repel radially outward with velocity-scaled impulse shockwaves, interaction luminescence flares, and friction damping (`0.92`).
+  - **Multi-Plane 3D Parallax Scroll Depth:** Particles carry depth factors (`0.25` to `1.0`); scrolling dynamically shifts layers vertically at varying speeds and imparts fluid kinetic momentum.
+  - **Elastic Aurora Sway & Viewport Wrapping:** Radial glow cushions vertically on scroll acceleration, and particles seamlessly wrap across viewport edges for continuous density.
+  - **Strict Background Layering:** Zero click interference (`pointer-events-none`) with all cards, buttons, text, and modals elevated to `relative z-10` and above.
+- **Brand Identity & Custom Emblem (`BrandLogo.tsx`):**
+  - Custom geometric monogram mark (`M` and `G` in luxury gold and crimson) with transparent dark/light theme switching.
+  - Integrated across the sticky navigation bar, footer, admin sidebar, and live preview slide-over.
+  - Centered high-resolution transparent browser favicon (`favicon.ico` / `favicon.png`).
+- **Directional Fill Navbar & Unified Breakpoints (`Navbar.tsx`):**
+  - Direction-aware navigation link hover fills sweeping left-to-right (LTR) in English and right-to-left (RTL) in Arabic.
+  - Unified responsive breakpoint at `lg: 1024px` eliminating overlap between desktop navigation links and mobile hamburger controls, with automatic drawer collapse on window resize.
+  - Tactile luxury button animations (`.btn-luxury-gold`, `.btn-luxury-ghost`, `.pill-interactive`) across all page sections and modals.
 - **Brand Marquee Bar:** Authorized GCC distribution seals for Ducati, BMW Motorrad, Vespa, and Harley-Davidson with active model counters and filtering.
 - **Hero Showcase:** Panigale V4 flagship spotlight with rim lighting, floating telemetry badges (215.5 BHP, 2.8s 0-100, 1,103 CC), and regional GCC showroom ribbon.
 - **Editorial Segment Showcase:** 5-segment filter (`ALL`, `PERFORMANCE`, `ADVENTURE`, `URBAN EV`, `HERITAGE`) with subtle watermark branding and high-contrast typography.
 - **Dyno Cockpit Cards:** Stitch MCP token-aligned cards (8px container, 4px buttons) featuring starting prices in AED, live telemetry HUD (BHP, Torque, 0-100 km/h), displacement badge, and dual CTAs.
 - **Engineering Telemetry Modal:** 12px modal dialog with backdrop acrylic blur, multi-angle gallery, interactive factory colorway swatches, and 8-point engineering spec matrix.
 - **VIP Test-Ride Concierge Wizard:** 3-stage guided reservation wizard + VIP Boarding Pass with dynamic hardware-accelerated height animation (`ResizeObserver` + Framer Motion) that completely prevents empty dead space or layout jumps. Integrated with `POST /api/test-rides` and WhatsApp Concierge handoff.
-- **Regional Flagship Hubs (Dubai, Riyadh, Doha):** Interactive architectural boutique card with city switcher tabs, dual-mode media carousel slider (switching between architectural photo and embedded interactive Google Maps), confirmed addresses, operating hours, direct phone, VIP lounge reservations, and Google Maps directions.
+- **Regional Flagship Hubs (Dubai, Riyadh, Doha):** Interactive architectural boutique card with city switcher tabs, clean dual-mode media slider (switching between architectural photo and embedded interactive Google Maps), confirmed addresses, operating hours, direct phone, VIP lounge reservations, and Google Maps directions.
 - **Automotive Group Footer:** Bilingual legal marque footer with live language toggle (`EN | العربية`), localized Privacy Policy and Terms & Conditions floating popovers anchored directly above the trigger links with smooth tab switching, and administrative portal access.
 - **Bilingual & Bidi Support:** Native English (LTR) and Gulf Arabic (RTL) with `Tajawal` typography and contextual bidi alignment.
 
 ### Role-Aware CMS & Operations Cockpit (`/admin`)
-- **Luxury Dark/Light Technical Sidebar & Operations Bar (`SidebarNav.tsx`, `AdminDashboardPage.tsx`):** Stitch-aligned console with gold indicator pips, role seals (`GROUP ADMIN` vs `MARQUE MODERATOR`), dual light/dark theme switching, native language toggle (`EN | العربية`), and direct showroom link.
+- **Luxury Dark/Light Technical Sidebar & Operations Bar (`SidebarNav.tsx`, `AdminDashboardPage.tsx`):** Stitch-aligned console with gold indicator pips, role seals (`GROUP ADMIN` vs `MARQUE MODERATOR`), dual light/dark theme switching, native language toggle (`EN | العربية`), custom brand logo mark, and direct showroom link.
 - **Dual-Mode Theme Switching & Full Arabic RTL Support:** Seamless switching between luxury obsidian dark (`#0B0F17` / `#1C2433`) and warm desert sand light modes, with full right-to-left (RTL) layout adaptation and `Tajawal` font across all administrative views.
 - **Operations Overview (`OverviewView.tsx`):** Real-time KPI matrix tracking fleet capacity, pending VIP leads, average horsepower dyno telemetry, and regional hub distribution (Dubai, Riyadh, Doha).
 - **Fleet Inventory Management (`InventoryTableView.tsx` & `MotorcycleFormModal.tsx`):** High-density sortable data table with brand filtering (all marques for Admin; strictly locked to assigned marque for Moderator), full motorcycle CRUD, and dyno specification editor.

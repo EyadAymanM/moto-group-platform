@@ -335,7 +335,7 @@ export const TestRideModal: React.FC<TestRideModalProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="p-1.5 rounded-[4px] bg-theme-base border border-theme-subtle text-theme-muted hover:text-theme-primary hover:border-theme-focus transition-all cursor-pointer"
+              className="p-1.5 rounded-[4px] bg-theme-base border border-theme-subtle text-theme-muted hover:text-theme-primary hover:border-theme-gold/60 hover:scale-110 active:scale-90 transition-all cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
@@ -895,7 +895,7 @@ export const TestRideModal: React.FC<TestRideModalProps> = ({
                 <button
                   type="button"
                   onClick={() => goToStep((step - 1) as 1 | 2)}
-                  className="px-3.5 py-2 rounded-[4px] bg-theme-base border border-theme-subtle hover:border-theme-focus text-theme-primary font-semibold text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer"
+                  className="btn-luxury-ghost px-3.5 py-2 rounded-[4px] text-xs uppercase tracking-wider flex items-center gap-1.5 cursor-pointer font-semibold"
                 >
                   {isRtl ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
                   <span>{locale === 'ar' ? 'السابق' : 'Back'}</span>
@@ -908,7 +908,7 @@ export const TestRideModal: React.FC<TestRideModalProps> = ({
                 <button
                   type="button"
                   onClick={() => goToStep((step + 1) as 2 | 3)}
-                  className="px-5 py-2.5 rounded-[4px] bg-theme-gold hover:brightness-110 active:scale-[0.98] text-slate-950 font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
+                  className="btn-luxury-gold px-5 py-2.5 rounded-[4px] text-xs uppercase tracking-wider flex items-center gap-1.5 cursor-pointer shadow-sm font-bold"
                 >
                   <span>{locale === 'ar' ? 'المتابعة' : 'Continue'}</span>
                   {isRtl ? <ChevronLeft className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
@@ -918,7 +918,7 @@ export const TestRideModal: React.FC<TestRideModalProps> = ({
                   type="button"
                   onClick={handleSubmit}
                   disabled={isSubmitting}
-                  className="px-6 py-2.5 rounded-[4px] bg-theme-gold hover:brightness-110 active:scale-[0.98] text-slate-950 font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer shadow-md disabled:opacity-50"
+                  className="btn-luxury-gold px-6 py-2.5 rounded-[4px] text-xs uppercase tracking-wider flex items-center gap-1.5 cursor-pointer shadow-md font-bold disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <span>{t('testRide.submitting')}</span>

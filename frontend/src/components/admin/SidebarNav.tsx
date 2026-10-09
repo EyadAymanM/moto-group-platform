@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
-
 import { useTranslation } from 'react-i18next'
+import { BrandLogo } from '../common/BrandLogo'
 import {
   LayoutDashboard,
   Bike,
@@ -10,7 +10,6 @@ import {
   SlidersHorizontal,
   ExternalLink,
   LogOut,
-  Shield,
 } from 'lucide-react'
 
 export type AdminTab = 'overview' | 'inventory' | 'leads' | 'cms'
@@ -83,9 +82,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({
         {/* Operations Center Logo Seal */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-[4px] bg-theme-elevated border border-theme-subtle flex items-center justify-center text-theme-gold shadow-sm">
-              <Shield className="w-4 h-4" />
-            </div>
+            <BrandLogo variant="mark" size="sm" showText={false} />
             <div>
               <div className="font-display font-bold text-sm tracking-wide text-theme-primary leading-tight">
                 MOTO GROUP

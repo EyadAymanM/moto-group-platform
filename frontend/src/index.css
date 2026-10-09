@@ -123,3 +123,141 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-gold);
 }
+
+/* =========================================================================
+   Interactive Navigation & Directional Fill Animation
+   ========================================================================= */
+
+.nav-fill-link {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: color 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-fill-link .nav-fill-bg {
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--accent-gold) 14%, var(--bg-surface-elevated));
+  border: 1px solid color-mix(in srgb, var(--accent-gold) 35%, transparent);
+  border-radius: 4px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+[dir="rtl"] .nav-fill-link .nav-fill-bg {
+  transform-origin: right;
+}
+
+.nav-fill-link:hover .nav-fill-bg {
+  transform: scaleX(1);
+}
+
+.nav-fill-link .nav-fill-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-gold);
+  box-shadow: 0 0 6px var(--accent-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+[dir="rtl"] .nav-fill-link .nav-fill-line {
+  transform-origin: right;
+}
+
+.nav-fill-link:hover .nav-fill-line {
+  transform: scaleX(1);
+}
+
+/* =========================================================================
+   Luxury Automotive Button & Interactive Micro-Animations
+   ========================================================================= */
+
+/* Primary VIP Gold Action Button */
+.btn-luxury-gold {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent-gold);
+  color: #020617; /* slate-950 */
+  font-weight: 700;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.2s ease,
+              background-color 0.2s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.btn-luxury-gold:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 0 6px 20px -2px rgba(212, 175, 55, 0.35);
+}
+
+.btn-luxury-gold:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px -2px rgba(212, 175, 55, 0.25);
+}
+
+/* Secondary / Elevated Architectural Button */
+.btn-luxury-ghost {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s ease,
+              background-color 0.2s ease,
+              color 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-luxury-ghost:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-focus);
+  background-color: color-mix(in srgb, var(--bg-surface) 90%, var(--accent-gold) 10%);
+  color: var(--accent-gold);
+  box-shadow: 0 6px 18px -4px rgba(0, 0, 0, 0.25);
+}
+
+.btn-luxury-ghost:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Filter Pill / Tab Interactive */
+.pill-interactive {
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.18s ease,
+              background-color 0.18s ease,
+              box-shadow 0.18s ease,
+              color 0.18s ease;
+  cursor: pointer;
+}
+
+.pill-interactive:hover {
+  transform: translateY(-1.5px);
+}
+
+.pill-interactive:active {
+  transform: translateY(0) scale(0.96);
+}
+
