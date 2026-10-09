@@ -18,6 +18,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestRideDrawer }) => {
   const { user } = useAuth()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault()
+    setMobileMenuOpen(false)
+    const el = document.getElementById(targetId)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
   return (
     <header className="sticky top-0 z-40 w-full glass-panel border-b border-theme-subtle transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,19 +51,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestRideDrawer }) => {
           <nav className="hidden md:flex items-center gap-8">
             <a
               href="#marques"
-              className="text-sm font-medium text-theme-muted hover:text-theme-gold transition-colors"
+              onClick={(e) => handleScrollTo(e, 'marques')}
+              className="text-sm font-medium text-theme-muted hover:text-theme-gold transition-colors cursor-pointer"
             >
               {t('nav.marques')}
             </a>
             <a
               href="#catalog"
-              className="text-sm font-medium text-theme-muted hover:text-theme-gold transition-colors"
+              onClick={(e) => handleScrollTo(e, 'catalog')}
+              className="text-sm font-medium text-theme-muted hover:text-theme-gold transition-colors cursor-pointer"
             >
               {t('nav.fleet')}
             </a>
             <a
               href="#dealers"
-              className="text-sm font-medium text-theme-muted hover:text-theme-gold transition-colors"
+              onClick={(e) => handleScrollTo(e, 'dealers')}
+              className="text-sm font-medium text-theme-muted hover:text-theme-gold transition-colors cursor-pointer"
             >
               {t('nav.dealers')}
             </a>
@@ -226,22 +238,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestRideDrawer }) => {
             <nav className="flex flex-col space-y-2">
               <a
                 href="#marques"
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 rounded text-sm text-theme-muted hover:text-theme-gold hover:bg-theme-elevated transition-colors"
+                onClick={(e) => handleScrollTo(e, 'marques')}
+                className="px-3 py-2 rounded text-sm text-theme-muted hover:text-theme-gold hover:bg-theme-elevated transition-colors cursor-pointer"
               >
                 {t('nav.marques')}
               </a>
               <a
                 href="#catalog"
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 rounded text-sm text-theme-muted hover:text-theme-gold hover:bg-theme-elevated transition-colors"
+                onClick={(e) => handleScrollTo(e, 'catalog')}
+                className="px-3 py-2 rounded text-sm text-theme-muted hover:text-theme-gold hover:bg-theme-elevated transition-colors cursor-pointer"
               >
                 {t('nav.fleet')}
               </a>
               <a
                 href="#dealers"
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 rounded text-sm text-theme-muted hover:text-theme-gold hover:bg-theme-elevated transition-colors"
+                onClick={(e) => handleScrollTo(e, 'dealers')}
+                className="px-3 py-2 rounded text-sm text-theme-muted hover:text-theme-gold hover:bg-theme-elevated transition-colors cursor-pointer"
               >
                 {t('nav.dealers')}
               </a>

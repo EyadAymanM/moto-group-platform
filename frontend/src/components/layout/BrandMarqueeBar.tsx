@@ -20,7 +20,7 @@ export const BrandMarqueeBar: React.FC<BrandMarqueeBarProps> = ({
   const safeBrands = Array.isArray(brands) ? brands : []
 
   return (
-    <section id="marques" className="w-full py-8 border-b border-theme-subtle bg-theme-surface/50">
+    <section id="marques" className="w-full py-8 border-b border-theme-subtle bg-theme-surface/50 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

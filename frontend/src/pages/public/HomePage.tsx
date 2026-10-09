@@ -3,6 +3,8 @@ import { Navbar } from '../../components/layout/Navbar'
 import { BrandMarqueeBar } from '../../components/layout/BrandMarqueeBar'
 import { HeroSection } from '../../components/sections/HeroSection'
 import { CatalogSection } from '../../components/sections/CatalogSection'
+import { DealershipsSection, type CityKey } from '../../components/sections/DealershipsSection'
+import { Footer } from '../../components/layout/Footer'
 import { TelemetryModal } from '../../components/modals/TelemetryModal'
 import { TestRideModal } from '../../components/modals/TestRideModal'
 import { ScrollReveal } from '../../components/common/ScrollReveal'
@@ -18,6 +20,7 @@ export const HomePage: React.FC = () => {
   const [selectedBrandId, setSelectedBrandId] = useState<number | null>(null)
   const [telemetryModalBike, setTelemetryModalBike] = useState<Motorcycle | null>(null)
   const [testRideBike, setTestRideBike] = useState<Motorcycle | null>(null)
+  const [testRideInitialCity, setTestRideInitialCity] = useState<CityKey | undefined>(undefined)
   const [isTestRideModalOpen, setIsTestRideModalOpen] = useState(false)
   const [loading, setLoading] = useState(true)
 
@@ -99,6 +102,18 @@ export const HomePage: React.FC = () => {
             </ScrollReveal>
           )}
 
+          {/* Section: Regional Flagship Hubs (Block 6) */}
+          {cmsSettings?.section_visibility?.regional_showrooms_map !== false && (
+            <ScrollReveal delay={0.08}>
+              <DealershipsSection
+                onReserveLounge={(city) => {
+                  setTestRideInitialCity(city)
+                  setIsTestRideModalOpen(true)
+                }}
+              />
+            </ScrollReveal>
+          )}
+
           {/* Block 4: Engineering Telemetry Modal */}
           <TelemetryModal
             motorcycle={telemetryModalBike}
@@ -115,20 +130,20 @@ export const HomePage: React.FC = () => {
             <TestRideModal
               isOpen={isTestRideModalOpen}
               preSelectedMotorcycle={testRideBike}
+              initialCity={testRideInitialCity}
               brands={brands}
               onClose={() => {
                 setIsTestRideModalOpen(false)
                 setTestRideBike(null)
+                setTestRideInitialCity(undefined)
               }}
             />
           )}
         </motion.main>
       </AnimatePresence>
 
-      {/* Temporary Minimal Footer */}
-      <footer className="border-t border-theme-subtle py-8 px-4 text-center text-xs font-mono text-theme-muted">
-        <p>© {new Date().getFullYear()} MOTO GROUP. All rights reserved.</p>
-      </footer>
+      {/* Block 6: Regional Automotive Group Footer */}
+      <Footer />
     </div>
   )
 }

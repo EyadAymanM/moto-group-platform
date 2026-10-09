@@ -127,18 +127,40 @@
   "dealers": {
     "title": "Regional Dealership Boutiques",
     "subtitle": "Visit our temperature-controlled flagship showrooms with dedicated dyno bays and VIP client lounges.",
-    "dubai": "Dubai Flagship",
-    "riyadh": "Riyadh Boutique",
-    "doha": "Doha Lounge",
-    "whatsapp": "Concierge WhatsApp",
-    "statusOpen": "Open Today (9:00 AM - 9:00 PM)",
-    "statusService": "Dyno Bay Active"
+    "reserveLounge": "Reserve the VIP private lounge",
+    "directions": "Directions",
+    "mediaPhoto": "Showroom",
+    "mediaMap": "Interactive Map",
+    "dubai": {
+      "city": "Dubai",
+      "country": "Flagship boutique · UAE",
+      "address": "Sheikh Zayed Road, Exit 43, Al Quoz 1",
+      "hours": "Daily 10:00–22:00"
+    },
+    "riyadh": {
+      "city": "Riyadh",
+      "country": "Flagship boutique · Saudi Arabia",
+      "address": "King Fahd Road, Al Malqa District",
+      "hours": "Daily 10:00–22:00"
+    },
+    "doha": {
+      "city": "Doha",
+      "country": "Flagship boutique · Qatar",
+      "address": "Porto Arabia, Tower 22, The Pearl-Qatar",
+      "hours": "Daily 10:00–22:00"
+    }
   },
   "footer": {
-    "tagline": "The Middle East's Sovereign Multi-Brand Motorcycle Group.",
-    "marquesTitle": "Authorized Marques",
-    "dealersTitle": "Flagship Boutiques",
     "rights": "All rights reserved. Official regional partner for world motorcycling marques.",
-    "adminAccess": "Dealer & Moderator Portal"
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "privacyTitle": "Privacy Policy",
+    "termsTitle": "Terms & Conditions",
+    "privacyText1": "MOTO GROUP respects client confidentiality across the United Arab Emirates, Kingdom of Saudi Arabia, and State of Qatar. Client telemetry, contact information, and test-ride concierge bookings are handled with sovereign data protection standards.",
+    "privacyText2": "Personal credentials submitted through VIP private lounge or test-ride inquiries are utilized strictly for authorized dealer correspondence and are never disclosed to unauthorized third parties.",
+    "termsText1": "All displayed manufacturer trademarks, motorcycle specifications, horsepower ratings, and dyno telemetry are published under official Middle East distribution agreements for Ducati, BMW Motorrad, Vespa, and Harley-Davidson.",
+    "termsText2": "Test rides and private VIP lounge bookings are subject to valid GCC motorcycle licensing verification and security clearance by regional dealership directors.",
+    "adminAccess": "Portal",
+    "close": "Close"
   }
 }

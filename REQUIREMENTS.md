@@ -65,14 +65,14 @@
   - [x] Policies (`MotorcyclePolicy`, `TestRidePolicy`, `CmsSettingPolicy`)
   - [x] REST API Controllers & Form Requests
   - [x] Automated Test Suite: 8/8 tests passing with 108 assertions (`tests/Feature/ApiTest.php`)
-- [ ] **Phase 2: Public Showroom Homepage (React + Tailwind v4 + Framer Motion)**
+- [x] **Phase 2: Public Showroom Homepage (React + Tailwind v4 + Framer Motion)**
   - [x] Block 0: Design tokens, typography (Syne + Tajawal + JetBrains Mono), i18n (en/ar RTL), Theme/Locale/Auth contexts
   - [x] Block 1: Navigation bar with brand marque bar and booking CTA
   - [x] Block 2: Hero showcase section with Panigale V4 spotlight & GCC metrics ribbon
   - [x] Block 3: Segment filter & dynamic motorcycle catalog grid (`MotorcycleCard.tsx`, `CatalogSection.tsx`)
   - [x] Block 4: Telemetry & engineering specs modal with colorway swatches (`TelemetryModal.tsx`)
   - [x] Block 5: "Book a Test Ride" VIP concierge wizard with animated height & boarding pass (`TestRideModal.tsx`)
-  - [ ] Block 6: Regional Flagship Hubs boutique directory & automotive group footer
+  - [x] Block 6: Regional Flagship Hubs boutique directory & automotive group footer (`DealershipsSection.tsx`, `Footer.tsx`)
 - [ ] **Phase 3: Role-Aware CMS & Admin Portal**
   - [ ] Login screen with CSRF + Sanctum authentication
   - [ ] Admin dashboard view (global stats, brand overview, CMS settings toggles)

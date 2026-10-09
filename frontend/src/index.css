@@ -46,7 +46,12 @@ html.light {
   color-scheme: light;
 }
 
-/* Base Body Styles */
+/* Base HTML & Body Styles */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
 body {
   margin: 0;
   font-family: var(--font-body);

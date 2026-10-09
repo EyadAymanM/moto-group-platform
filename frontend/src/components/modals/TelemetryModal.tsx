@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import type { Motorcycle } from '../../types'
 import { useTranslation } from 'react-i18next'
 import { useLocale } from '../../contexts/LocaleContext'
@@ -112,7 +113,9 @@ export const TelemetryModal: React.FC<TelemetryModalProps> = ({
     },
   ]
 
-  return (
+  if (typeof document === 'undefined') return null
+
+  return createPortal(
     <AnimatePresence>
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
         {/* Backdrop Acrylic Overlay */}
@@ -301,6 +304,7 @@ export const TelemetryModal: React.FC<TelemetryModalProps> = ({
           </div>
         </motion.div>
       </div>
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   )
 }

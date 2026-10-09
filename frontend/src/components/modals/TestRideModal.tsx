@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react'
+import { createPortal } from 'react-dom'
 import type { Brand, Motorcycle, TestRideRequest } from '../../types'
 import { useTranslation } from 'react-i18next'
 import { useLocale } from '../../contexts/LocaleContext'
@@ -18,6 +19,7 @@ import {
 interface TestRideModalProps {
   isOpen: boolean
   preSelectedMotorcycle: Motorcycle | null
+  initialCity?: CityKey
   brands: Brand[]
   onClose: () => void
 }
@@ -28,6 +30,7 @@ type ExperienceKey = 'Beginner' | 'Intermediate' | 'Expert'
 export const TestRideModal: React.FC<TestRideModalProps> = ({
   isOpen,
   preSelectedMotorcycle,
+  initialCity,
   brands,
   onClose,
 }) => {
@@ -127,12 +130,17 @@ export const TestRideModal: React.FC<TestRideModalProps> = ({
         setIsChangingBike(true)
       }
 
+      // Pre-select city if passed from boutique concierge
+      if (initialCity) {
+        setPreferredCity(initialCity)
+      }
+
       // Default preferred date to first upcoming session slot
       if (sessionSlots.length > 0) {
         setPreferredDate(sessionSlots[0].dateStr)
       }
     }
-  }, [isOpen, preSelectedMotorcycle, brands, sessionSlots])
+  }, [isOpen, preSelectedMotorcycle, initialCity, brands, sessionSlots])
 
   // Fetch motorcycles when brand changes (only when user is choosing or changing bike)
   useEffect(() => {
@@ -287,7 +295,9 @@ export const TestRideModal: React.FC<TestRideModalProps> = ({
     }),
   }
 
-  return (
+  if (typeof document === 'undefined') return null
+
+  return createPortal(
     <AnimatePresence>
       <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
         {/* Backdrop Acrylic Overlay */}
@@ -924,6 +934,7 @@ export const TestRideModal: React.FC<TestRideModalProps> = ({
           )}
         </motion.div>
       </div>
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   )
 }

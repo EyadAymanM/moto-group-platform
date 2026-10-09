@@ -105,6 +105,8 @@ Frontend application will be accessible at `http://localhost:5173`.
 - **Dyno Cockpit Cards:** Stitch MCP token-aligned cards (8px container, 4px buttons) featuring starting prices in AED, live telemetry HUD (BHP, Torque, 0-100 km/h), displacement badge, and dual CTAs.
 - **Engineering Telemetry Modal:** 12px modal dialog with backdrop acrylic blur, multi-angle gallery, interactive factory colorway swatches, and 8-point engineering spec matrix.
 - **VIP Test-Ride Concierge Wizard:** 3-stage guided reservation wizard + VIP Boarding Pass with dynamic hardware-accelerated height animation (`ResizeObserver` + Framer Motion) that completely prevents empty dead space or layout jumps. Integrated with `POST /api/test-rides` and WhatsApp Concierge handoff.
+- **Regional Flagship Hubs (Dubai, Riyadh, Doha):** Interactive architectural boutique card with city switcher tabs, dual-mode media carousel slider (switching between architectural photo and embedded interactive Google Maps), confirmed addresses, operating hours, direct phone, VIP lounge reservations, and Google Maps directions.
+- **Automotive Group Footer:** Bilingual legal marque footer with live language toggle (`EN | العربية`), localized Privacy Policy and Terms & Conditions floating popovers anchored directly above the trigger links with smooth tab switching, and administrative portal access.
 - **Bilingual & Bidi Support:** Native English (LTR) and Gulf Arabic (RTL) with `Tajawal` typography and contextual bidi alignment.
 
 ---
