@@ -2,6 +2,8 @@
 
 A full-stack multi-brand motorcycle digital platform operating across regional showrooms. Features a modern technical luxury public showroom and a role-based CMS management portal.
 
+> 🌐 **Live Deployed Demonstration:** `[Deployment Pending / In Progress — Live URL will be added here upon final cloud provisioning]`  
+
 ---
 
 ## Architecture & Technology Stack
@@ -117,6 +119,59 @@ Frontend application will be accessible at `http://localhost:5173`.
 | **BMW Moderator** | `moderator.bmw@motogroup.com` | `password` | Brand-scoped: BMW Motorrad catalog CRUD, BMW test-ride leads |
 | **Vespa Moderator** | `moderator.vespa@motogroup.com` | `password` | Brand-scoped: Vespa catalog CRUD, Vespa test-ride leads |
 | **Harley Moderator** | `moderator.harley@motogroup.com` | `password` | Brand-scoped: Harley-Davidson catalog CRUD, Harley test-ride leads |
+
+---
+
+### 4. Optional: Production Optimization & Diagnostics Commands
+
+For production deployment preparation, high-throughput caching, or diagnosing server behavior with detailed debug logs, you may optionally execute the following commands:
+
+#### A. Laravel Production Optimization
+```bash
+cd backend
+
+# 1. Compile all caches simultaneously (config, routes, events)
+php artisan optimize
+
+# 2. Or compile individual components selectively:
+php artisan config:cache    # Compiles .env and config files into a single cached file
+php artisan route:cache     # Compiles all API and web routes into a cached mapping
+```
+
+#### B. Laravel Debugging & Diagnostic Flags
+```bash
+cd backend
+
+# Flush all compiled caches if diagnosing unexpected changes or stale config:
+php artisan optimize:clear
+
+# In backend/.env, toggle debug verbosity:
+# APP_DEBUG=true            # Set to true for detailed JSON error stack traces (disable in production)
+# LOG_LEVEL=debug           # Captures granular query and framework logs in storage/logs/laravel.log
+
+# Run local PHP server with verbose real-time request/response logging:
+php artisan serve --verbose
+```
+
+#### C. Frontend Production Build & Diagnostics
+```bash
+cd frontend
+
+# 1. Compile optimized production distribution bundle (outputs to dist/):
+npm run build
+
+# 2. Preview the production build locally (simulates production HTTP server on port 4173):
+npm run preview
+
+# 3. Start Vite dev server with verbose HMR and plugin transform debug output:
+npm run dev -- --debug
+```
+
+#### D. Production Environment Considerations (CORS & Domains)
+> In an enterprise production deployment:
+> - Set `APP_ENV=production` and `APP_DEBUG=false` in `backend/.env`.
+> - Update `FRONTEND_URL` in `backend/.env` to the production domain (e.g., `https://motogroup.ae`).
+> - Set `SANCTUM_STATEFUL_DOMAINS` to the production frontend domain (e.g., `motogroup.ae,admin.motogroup.ae`).
 
 ---
 
