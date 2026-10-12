@@ -1,6 +1,6 @@
 import type { Brand, Motorcycle, TestRideRequest, User, CmsSettings } from '../types'
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+const API_BASE = (import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000').replace(/\/+$/, '')
 
 function getCsrfTokenFromCookie(): string | null {
   const match = document.cookie.match(/XSRF-TOKEN=([^;]+)/)

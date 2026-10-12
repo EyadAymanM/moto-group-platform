@@ -1,0 +1,9 @@
+vendor
+.env
+.env.*
+.git
+.gitignore
+tests
+phpunit.xml
+*.sqlite*
+storage/logs/*.log
